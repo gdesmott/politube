@@ -1,0 +1,13 @@
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+<h1>Plenieres</h1>
+<ul>
+{% for p in plenieres %}
+{% ifchanged %} <h2> {{ p.date|date:"Y" }} </h2> {% endifchanged %}
+<li><a href="{% url 'pleniere' p.id %}">{{ p.title }}</a></li>
+{% endfor %}
+</ul>
+</body>

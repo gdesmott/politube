@@ -1,5 +1,8 @@
 # Django settings for chambre project.
 
+import os
+PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -109,9 +112,7 @@ ROOT_URLCONF = 'chambre.urls'
 WSGI_APPLICATION = 'chambre.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_PATH + '/templates',
 )
 
 INSTALLED_APPS = (

@@ -1,0 +1,39 @@
+<head>
+<meta charset="UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+play = function (t)
+{
+var video = $('video').get(0);
+video.currentTime = t;
+video.play();
+}
+</script>
+</head>
+
+<body>
+<h1>{{ pleniere.title }} - {{ pleniere.date|date:"d m Y H:i" }}</h1>
+<p><a href='{{ pleniere.source }}'>source</a></p>
+
+<video width="320" height="240" controls preload=auto>
+<source src='{{ pleniere.getWebmStream }}' type="video/webm"/>
+Your browser does not support the video tag.
+</video>
+
+<ul>
+{% for agenda in pleniere.agendaitem_set.all %}
+
+{% if agenda.section %}
+  {% ifchanged %} <h2> {{ agenda.section }} </h2>  {% endifchanged %}
+{% endif %}
+
+{% if agenda.subsection %}
+{% ifchanged %} <h3> {{ agenda.subsection }} </h3>  {% endifchanged %}
+{% endif %}
+
+<li><a onclick="play({{ agenda.time }})" href="#">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
+
+{% endfor %}
+</ul>
+
+</body>
