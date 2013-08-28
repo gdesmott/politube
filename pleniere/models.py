@@ -17,6 +17,9 @@ class Pleniere(models.Model):
     def getWebmStream(self):
         return '%s/webm/%s' % (VIDEOS, self.webm)
 
+    class Meta:
+        ordering = ["-date"]
+
 class AgendaItem(models.Model):
     pleniere = models.ForeignKey(Pleniere)
     # time in seconds
