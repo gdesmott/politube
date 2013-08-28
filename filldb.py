@@ -14,7 +14,8 @@ AgendaItem.objects.all().delete()
 
 for p in find_all_plenieres():
     pleniere = Pleniere.objects.create(chambre_id=p.id,
-            source=p.source, date=p.date, title=p.title, webm=p.webm)
+            source=p.source, date=p.date, title=p.title, webm=p.webm,
+            stream=p.stream)
 
     for a in p.agenda:
         agenda = AgendaItem.objects.create(pleniere=pleniere,

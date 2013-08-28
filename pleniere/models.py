@@ -10,6 +10,7 @@ class Pleniere(models.Model):
     date = models.DateTimeField('date')
     title = models.CharField(max_length=200)
     webm = models.CharField(max_length=200)
+    stream = models.URLField()
 
     def __unicode__(self):
         return "%s - %s" % (self.chambre_id, self.title)
