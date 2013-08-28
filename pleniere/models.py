@@ -34,3 +34,6 @@ class AgendaItem(models.Model):
 
     def displayTime(self):
         return str(datetime.timedelta(seconds=self.time))
+
+    class Meta:
+        ordering = ["time"]
