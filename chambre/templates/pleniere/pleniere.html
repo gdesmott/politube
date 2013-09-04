@@ -1,7 +1,15 @@
 <head>
 <meta charset="UTF-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}mediaelement/jquery.js">
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js">
+</script>
 <script>
+
+$(document).ready(function() {
+  $('video').mediaelementplayer();
+});
+
 play = function (t)
 {
 var video = $('video').get(0);
@@ -9,6 +17,8 @@ video.currentTime = t;
 video.play();
 }
 </script>
+
+<link rel="stylesheet" href="{{ STATIC_URL }}mediaelement/mediaelementplayer.css" />
 </head>
 
 <body>
