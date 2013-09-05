@@ -2,3 +2,4 @@ django
 beautifulsoup4
 lxml
 django_pdb
+django-extensions

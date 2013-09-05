@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django_pdb',
+    'django_extensions',
     'pleniere',
 )
 
