@@ -6,12 +6,14 @@ from chambre import settings
 
 setup_environ(settings)
 
-from pleniere.models import Pleniere, AgendaItem
+from pleniere.models import Pleniere, AgendaItem, Deputy
 from pleniere.scrapper import find_all_plenieres
+import dieren
 
 def dropAll():
     Pleniere.objects.all().delete()
     AgendaItem.objects.all().delete()
+    Deputy.objects.all().delete()
 
 def populatePlenieres():
     for p in find_all_plenieres():
@@ -27,3 +29,4 @@ def populatePlenieres():
 if __name__ == '__main__':
     dropAll()
     populatePlenieres()
+    dieren.syncDeputies()
