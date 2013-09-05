@@ -21,6 +21,26 @@ class Pleniere(models.Model):
     class Meta:
         ordering = ["-date"]
 
+class Deputy(models.Model):
+    lachambre_id = models.CharField(max_length=200, primary_key=True)
+
+    current = models.BooleanField()
+    cv_fr = models.TextField()
+    cv_nl = models.TextField()
+    email = models.EmailField() # FIXME: get all emails?
+    first_name = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=200)
+    language = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=100)
+    sex = models.CharField(max_length=1)
+    website = models.URLField(null=True) # FIXME: get all websites?
+
+    def __unicode__(self):
+        return self.full_name
+
+    class Meta:
+        ordering = ["full_name"]
+
 class AgendaItem(models.Model):
     pleniere = models.ForeignKey(Pleniere)
     # time in seconds
