@@ -12,6 +12,7 @@ DEPUTIES_LIMIT = 200
 def jsonToModel(j):
     v= {}
 
+    v['dieren_id'] = j['id']
     v['lachambre_id'] = j['lachambre_id']
     v['current'] = j['current']
     v['cv_fr'] = j['cv']['fr']
@@ -34,7 +35,7 @@ def syncDeputies():
     for d in j['objects']:
         args = jsonToModel(d)
         try:
-            deputy = Deputy.objects.get(lachambre_id=d['lachambre_id'])
+            deputy = Deputy.objects.get(dieren_id=d['id'])
             print "UPDATE", args['full_name']
             for k in args:
                 setattr(deputy, k, args[k])

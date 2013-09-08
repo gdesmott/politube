@@ -22,7 +22,7 @@ class Pleniere(models.Model):
         ordering = ["-date"]
 
 class Deputy(models.Model):
-    lachambre_id = models.CharField(max_length=200, primary_key=True)
+    dieren_id = models.CharField(max_length=200, primary_key=True)
 
     current = models.BooleanField()
     cv_fr = models.TextField()
@@ -30,6 +30,7 @@ class Deputy(models.Model):
     email = models.EmailField() # FIXME: get all emails?
     first_name = models.CharField(max_length=100)
     full_name = models.CharField(max_length=200)
+    lachambre_id = models.CharField(max_length=200)
     language = models.CharField(max_length=200)
     last_name = models.CharField(max_length=100)
     sex = models.CharField(max_length=1)
