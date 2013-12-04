@@ -49,6 +49,7 @@ class AgendaItem(models.Model):
     speaker = models.CharField(max_length=200)
     section = models.CharField(max_length=200, null=True)
     subsection = models.CharField(max_length=200, null=True)
+    speaker_id = models.ForeignKey(Deputy, null=True)
 
     def __unicode__(self):
         return "%s - %s (%s)" % (self.speaker, self.pleniere.title, self.time)
