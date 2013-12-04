@@ -46,8 +46,8 @@ class Pleniere (object):
 
     def _extractTitle(self):
         h4 = self.soup.find_all('h4')
-        # CRAP: use the second <h4>
-        return h4[1].text.encode('utf-8')
+        # CRAP: use the 8th <h4>
+        return h4[7].text.encode('utf-8')
 
     def _extractStream(self):
         e = self.soup.find(href=re.compile("mms://"))
