@@ -33,7 +33,7 @@ class Deputy(models.Model):
     lachambre_id = models.CharField(max_length=200)
     language = models.CharField(max_length=200)
     last_name = models.CharField(max_length=100)
-    sex = models.CharField(max_length=1)
+    sex = models.CharField(max_length=1, null=True)
     website = models.URLField(null=True) # FIXME: get all websites?
 
     def __unicode__(self):
