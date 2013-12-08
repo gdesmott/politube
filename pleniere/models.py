@@ -2,7 +2,7 @@ import datetime
 
 from django.db import models
 
-VIDEOS = 'http://urlab-srv0.ulb.ac.be/~cassidy/'
+VIDEOS = 'http://agot.be/~lachambre/videos'
 
 class Pleniere(models.Model):
     chambre_id = models.CharField(max_length=200)
