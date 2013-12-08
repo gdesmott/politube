@@ -15,7 +15,7 @@
 <ul>
 {% for agenda in deputy.getSortedItems %}
 
-<li><a href="{% url 'pleniere' agenda.pleniere.id %}">
+<li><a href="{% url 'pleniere' agenda.pleniere.id %}#{{ agenda.time }}">
     {{ agenda.pleniere.date }} - {{ agenda.displayTime }}</a></li>
 
 {% endfor %}
