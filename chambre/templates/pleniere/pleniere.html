@@ -2,29 +2,7 @@
 
 {% block head %}
 <script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js"></script>
-<script>
-$(document).ready(function() {
-  $('video').mediaelementplayer();
-});
-
-play = function (t)
-{
-var video = $('video').get(0);
-video.currentTime = t;
-video.play();
-}
-
-startIfNeeded = function ()
-{
-  var h = window.location.hash;
-  if (h != '#') {
-    t = parseInt(h.replace('#', ''));
-    if (t) {
-      play(t);
-    }
-  }
-}
-</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/pleniere.js"></script>
 
 <link rel="stylesheet" href="{{ STATIC_URL }}mediaelement/mediaelementplayer.css" />
 {% endblock %}
