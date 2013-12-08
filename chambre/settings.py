@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'django_pdb',
     'django_extensions',
     'pleniere',
+    'deputy',
 )
 
 # A sample logging configuration. The only tangible logging

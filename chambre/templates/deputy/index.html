@@ -1,0 +1,12 @@
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+<h1>Deputies</h1>
+<ul>
+{% for d in deputies %}
+<li><a href="{% url 'deputy' d.dieren_id %}">{{ d.full_name }}</a></li>
+{% endfor %}
+</ul>
+</body>
