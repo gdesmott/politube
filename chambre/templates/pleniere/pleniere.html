@@ -16,6 +16,18 @@ var video = $('video').get(0);
 video.currentTime = t;
 video.play();
 }
+
+startIfNeeded = function ()
+{
+  var h = window.location.hash;
+  if (h != '#') {
+    t = parseInt(h.replace('#', ''));
+    if (t) {
+      play(t);
+    }
+  }
+}
+
 </script>
 
 <link rel="stylesheet" href="{{ STATIC_URL }}mediaelement/mediaelementplayer.css" />
@@ -25,7 +37,7 @@ video.play();
 <h1>{{ pleniere.title }} - {{ pleniere.date|date:"d m Y H:i" }}</h1>
 <p><a href='{{ pleniere.source }}'>source</a></p>
 
-<video width="320" height="240" controls preload=auto>
+<video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
 <source src='{{ pleniere.getWebmStream }}' type="video/webm"/>
 Your browser does not support the video tag.
 </video>
@@ -41,7 +53,7 @@ Your browser does not support the video tag.
 {% ifchanged %} <h3> {{ agenda.subsection }} </h3>  {% endifchanged %}
 {% endif %}
 
-<li><a onclick="play({{ agenda.time }})" href="#">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
+<li><a onclick="play({{ agenda.time }})" href="# {{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
 
 {% endfor %}
 </ul>
