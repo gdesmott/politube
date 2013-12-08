@@ -1,12 +1,11 @@
-<head>
-<meta charset="UTF-8">
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block content %}
 <h1>Deputies</h1>
 <ul>
 {% for d in deputies %}
 <li><a href="{% url 'deputy' d.dieren_id %}">{{ d.full_name }}</a></li>
 {% endfor %}
 </ul>
-</body>
+
+{% endblock %}

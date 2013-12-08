@@ -1,11 +1,8 @@
-<head>
-<meta charset="UTF-8">
-<script type="text/javascript" src="{{ STATIC_URL }}mediaelement/jquery.js">
-</script>
-<script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js">
-</script>
-<script>
+{% extends 'base.html' %}
 
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js"></script>
+<script>
 $(document).ready(function() {
   $('video').mediaelementplayer();
 });
@@ -27,13 +24,12 @@ startIfNeeded = function ()
     }
   }
 }
-
 </script>
 
 <link rel="stylesheet" href="{{ STATIC_URL }}mediaelement/mediaelementplayer.css" />
-</head>
+{% endblock %}
 
-<body>
+{% block content %}
 <h1>{{ pleniere.title }} - {{ pleniere.date|date:"d m Y H:i" }}</h1>
 <p><a href='{{ pleniere.source }}'>source</a></p>
 
@@ -57,5 +53,4 @@ Your browser does not support the video tag.
 
 {% endfor %}
 </ul>
-
-</body>
+{% endblock %}

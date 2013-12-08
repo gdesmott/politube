@@ -1,8 +1,6 @@
-<head>
-<meta charset="UTF-8">
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block content %}
 <h1>Plenieres</h1>
 <ul>
 {% for p in plenieres %}
@@ -10,4 +8,4 @@
 <li><a href="{% url 'pleniere' p.id %}">{{ p.title }}</a></li>
 {% endfor %}
 </ul>
-</body>
+{% endblock %}

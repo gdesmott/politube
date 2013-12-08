@@ -1,8 +1,6 @@
-<head>
-<meta charset="UTF-8">
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block content %}
 <h1>{{ deputy.full_name }}</h1>
 
 <p><a href='mailto:{{ deputy.email }}'>{{ deputy.email }}</a></p>
@@ -20,5 +18,4 @@
 
 {% endfor %}
 </ul>
-
-</body>
+{% endblock %}
