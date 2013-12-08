@@ -10,4 +10,15 @@
 <p>{{ deputy.language }}</p>
 <p><i>{{ deputy.cv_fr }}</i></p>
 <p><i>{{ deputy.cv_nl }}</i></p>
+
+<h2>Speaches</h2>
+<ul>
+{% for agenda in deputy.getSortedItems %}
+
+<li><a href="{% url 'pleniere' agenda.pleniere.id %}">
+    {{ agenda.pleniere.date }} - {{ agenda.displayTime }}</a></li>
+
+{% endfor %}
+</ul>
+
 </body>
