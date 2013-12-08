@@ -53,7 +53,7 @@ Your browser does not support the video tag.
 {% ifchanged %} <h3> {{ agenda.subsection }} </h3>  {% endifchanged %}
 {% endif %}
 
-<li><a onclick="play({{ agenda.time }})" href="# {{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
+<li><a onclick="play({{ agenda.time }})" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
 
 {% endfor %}
 </ul>
