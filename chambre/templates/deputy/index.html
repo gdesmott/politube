@@ -4,6 +4,7 @@
 <h1>Deputies</h1>
 <ul>
 {% for d in deputies %}
+{% ifchanged %} <h2>{{d.party.name}}</h2> {% endifchanged %}
 <li><a href="{% url 'deputy' d.dieren_id %}">{{ d.full_name }}</a></li>
 {% endfor %}
 </ul>
