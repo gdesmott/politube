@@ -54,10 +54,16 @@ def stripSpeakerName(speaker):
 def linkPlenieresDeputies():
     queryset = Deputy.objects.all()
 
-    for a in AgendaItem.objects.all():
+    items = AgendaItem.objects.all()
+
+    count = -1
+    tot = len(items)
+
+    for a in items:
+        count += 1
         stripped = stripSpeakerName(a.speaker)
         if stripped is None:
-            print "IGNORE", a.speaker
+            print "IGNORE %s (%d / %d)" % (a.speaker, count, tot)
             continue
 
         match = process.extractOne(stripped, queryset, score_cutoff=FUZZY_THRESHOLD,
@@ -69,9 +75,9 @@ def linkPlenieresDeputies():
             deputy = match[0]
 
         if deputy is not None:
-            print "MATCH", a.speaker, " with ", deputy.full_name
+            print "MATCH %s with %s (%d / %d)" % (a.speaker, deputy.full_name, count, tot)
         else:
-            print "FAILED", a.speaker
+            print "FAILED %s (%d / %d)" % (a.speaker, count, tot)
 
         a.speaker_id = deputy
         a.save()
