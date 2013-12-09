@@ -61,6 +61,9 @@ def linkPlenieresDeputies():
     count = -1
     tot = len(items)
 
+    # str -> Deputy
+    cache = {}
+
     for a in items:
         count += 1
         stripped = stripSpeakerName(a.speaker)
@@ -68,13 +71,17 @@ def linkPlenieresDeputies():
             print "IGNORE %s (%d / %d)" % (a.speaker, count, tot)
             continue
 
-        match = process.extractOne(stripped, queryset, score_cutoff=FUZZY_THRESHOLD,
-                processor=lambda x: utils.full_process(x.full_name))
-
-        if match is None:
-            deputy = None
+        if cache.get(stripped) is not None:
+            deputy = cache[stripped]
         else:
-            deputy = match[0]
+            match = process.extractOne(stripped, queryset, score_cutoff=FUZZY_THRESHOLD,
+                    processor=lambda x: utils.full_process(x.full_name))
+
+            if match is None:
+                deputy = None
+            else:
+                deputy = match[0]
+                cache[stripped] = deputy
 
         if deputy is not None:
             print "MATCH %s with %s (%d / %d)" % (a.speaker, deputy.full_name, count, tot)
