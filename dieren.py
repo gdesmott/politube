@@ -3,11 +3,37 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chambre.settings")
 
 import urllib2
 import json
-from pleniere.models import Deputy
+from pleniere.models import Deputy, Party
 
-DEPUTIES_LIMIT = 200
+LIMIT = 200
 
-def jsonToModel(j):
+def party_json_to_model(j):
+    v= {}
+
+    v['dieren_id'] = j['id']
+    v['name'] = j['name']
+
+    return v
+
+def sync_parties():
+    url = "http://www.dierentheater.be/api/v1/party/?format=json&limit=%d" % (LIMIT)
+    data = urllib2.urlopen(url).read()
+
+    j = json.loads(data)
+    for d in j['objects']:
+        args = party_json_to_model(d)
+        try:
+            party = Party.objects.get(dieren_id=d['id'])
+            print "UPDATE", args['name']
+            for k in args:
+                setattr(party, k, args[k])
+            party.save()
+
+        except Party.DoesNotExist:
+            print "CREATE", args['name']
+            Party.objects.create(**args)
+
+def deputy_json_to_model(j):
     v= {}
 
     v['dieren_id'] = j['id']
@@ -23,15 +49,21 @@ def jsonToModel(j):
     v['sex'] = j['sex']
     v['website'] = j['websites'][0] if len(j['websites']) > 0 else None
 
+    if len(j['party']):
+        party_id = j['party'].split('/')[-2]
+        v['party'] = Party.objects.get(pk=party_id)
+    else:
+        v['party'] = None
+
     return v
 
 def syncDeputies():
-    url = "http://www.dierentheater.be/api/v1/deputy/?format=json&limit=%d" % (DEPUTIES_LIMIT)
+    url = "http://www.dierentheater.be/api/v1/deputy/?format=json&limit=%d" % (LIMIT)
     data = urllib2.urlopen(url).read()
 
     j = json.loads(data)
     for d in j['objects']:
-        args = jsonToModel(d)
+        args = deputy_json_to_model(d)
         try:
             deputy = Deputy.objects.get(dieren_id=d['id'])
             print "UPDATE", args['full_name']
@@ -44,4 +76,5 @@ def syncDeputies():
             Deputy.objects.create(**args)
 
 if __name__ == '__main__':
+    sync_parties()
     syncDeputies()
