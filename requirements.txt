@@ -3,3 +3,4 @@ beautifulsoup4
 lxml
 django_pdb
 django-extensions
+git+git://github.com/seatgeek/fuzzywuzzy.git#egg=fuzzywuzzy
