@@ -4,6 +4,9 @@
 <h1>{{ deputy.full_name }}</h1>
 
 <p><a href='mailto:{{ deputy.email }}'>{{ deputy.email }}</a></p>
+{% if deputy.website %}
+<p><a href='{{deputy.website}}'>{{deputy.website}}</a></p>
+{% endif %}
 
 <p><b>{{deputy.party.name}}</b></p>
 <p>{{ deputy.language }}</p>
