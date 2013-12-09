@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.core.management import setup_environ
-from chambre import settings
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chambre.settings")
 
 from fuzzywuzzy import process, utils
-
-setup_environ(settings)
 
 from pleniere.models import Pleniere, AgendaItem, Deputy
 from pleniere.scrapper import find_all_plenieres

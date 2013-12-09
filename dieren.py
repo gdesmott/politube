@@ -1,7 +1,5 @@
-from django.core.management import setup_environ
-from chambre import settings
-
-setup_environ(settings)
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chambre.settings")
 
 import urllib2
 import json
