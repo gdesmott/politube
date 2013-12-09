@@ -21,6 +21,16 @@ class Pleniere(models.Model):
     class Meta:
         ordering = ["-date"]
 
+class Party(models.Model):
+    dieren_id = models.CharField(max_length=200, primary_key=True)
+    name = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["name"]
+
 class Deputy(models.Model):
     dieren_id = models.CharField(max_length=200, primary_key=True)
 
@@ -35,12 +45,13 @@ class Deputy(models.Model):
     last_name = models.CharField(max_length=100)
     sex = models.CharField(max_length=1, null=True)
     website = models.URLField(null=True) # FIXME: get all websites?
+    party = models.ForeignKey(Party, null=True)
 
     def __unicode__(self):
         return self.full_name
 
     class Meta:
-        ordering = ["full_name"]
+        ordering = ["party", "full_name"]
 
     def getSortedItems(self):
         return self.agendaitem_set.all().order_by('pleniere', 'time')
