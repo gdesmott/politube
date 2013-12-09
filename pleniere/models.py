@@ -43,7 +43,7 @@ class Deputy(models.Model):
         ordering = ["full_name"]
 
     def getSortedItems(self):
-        return self.agendaitem_set.all().order_by('-pleniere', 'time')
+        return self.agendaitem_set.all().order_by('pleniere', 'time')
 
 class AgendaItem(models.Model):
     pleniere = models.ForeignKey(Pleniere)

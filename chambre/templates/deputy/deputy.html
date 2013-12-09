@@ -9,13 +9,16 @@
 <p><i>{{ deputy.cv_fr }}</i></p>
 <p><i>{{ deputy.cv_nl }}</i></p>
 
-<h2>Speaches</h2>
-<ul>
 {% for agenda in deputy.getSortedItems %}
 
+{% ifchanged %} <h2>{{ agenda.pleniere.date|date:"Y" }}</h2> {% endifchanged %}
+{% ifchanged %} <h4><a href="{% url 'pleniere' agenda.pleniere.id %}">{{ agenda.pleniere.title }} -
+    {{ agenda.pleniere.date|date:"d M Y" }}</a></h4> {% endifchanged %}
+
+<ul>
 <li><a href="{% url 'pleniere' agenda.pleniere.id %}#{{ agenda.time }}">
-    {{ agenda.pleniere.date }} - {{ agenda.displayTime }}</a></li>
+  {{ agenda.displayTime }}</a></li>
+</ul>
 
 {% endfor %}
-</ul>
 {% endblock %}
