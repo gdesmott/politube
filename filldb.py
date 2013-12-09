@@ -54,7 +54,9 @@ def stripSpeakerName(speaker):
 def linkPlenieresDeputies():
     queryset = Deputy.objects.all()
 
-    items = AgendaItem.objects.all()
+    #items = AgendaItem.objects.all()
+    # Start from 2010 for now as we don't have old deputies anyway
+    items = AgendaItem.objects.filter(pleniere__date__gt='2010-01-01')
 
     count = -1
     tot = len(items)
