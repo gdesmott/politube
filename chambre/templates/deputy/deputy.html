@@ -3,15 +3,22 @@
 {% block content %}
 <h1>{{ deputy.full_name }}</h1>
 
-<p><a href='mailto:{{ deputy.email }}'>{{ deputy.email }}</a></p>
-{% if deputy.website %}
-<p><a href='{{deputy.website}}'>{{deputy.website}}</a></p>
-{% endif %}
+<div class="row">
+  <div class="col-md-2">
+    <p><img src="{{deputy.photo_uri}}"/></p>
+  </div>
 
-<p><b>{{deputy.party.name}}</b></p>
-<p>{{ deputy.language }}</p>
-<p><i>{{ deputy.cv_fr }}</i></p>
-<p><i>{{ deputy.cv_nl }}</i></p>
+  <div class="col-md-10">
+    <p><b>{{deputy.party.name}}</b></p>
+    <p>{{ deputy.language }}</p>
+    <p><a href='mailto:{{ deputy.email }}'>{{ deputy.email }}</a></p>
+    {% if deputy.website %}
+    <p><a href='{{deputy.website}}'>{{deputy.website}}</a></p>
+    {% endif %}
+    <p><i>{{ deputy.cv_fr }}</i></p>
+  </div>
+
+</div>
 
 {% for agenda in deputy.getSortedItems %}
 
