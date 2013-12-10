@@ -46,6 +46,7 @@ class Deputy(models.Model):
     sex = models.CharField(max_length=1, null=True)
     website = models.URLField(null=True) # FIXME: get all websites?
     party = models.ForeignKey(Party, null=True)
+    photo_uri = models.URLField(null=True)
 
     def __unicode__(self):
         return self.full_name

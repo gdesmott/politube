@@ -48,6 +48,7 @@ def deputy_json_to_model(j):
     v['last_name'] = j['last_name']
     v['sex'] = j['sex']
     v['website'] = j['websites'][0] if len(j['websites']) > 0 else None
+    v['photo_uri'] = j['photo_uri']
 
     if len(j['party']):
         party_id = j['party'].split('/')[-2]
