@@ -9,14 +9,14 @@ class Pleniere(models.Model):
     source = models.URLField()
     date = models.DateTimeField('date')
     title = models.CharField(max_length=200)
-    webm = models.CharField(max_length=200)
+    video_id = models.CharField(max_length=200)
     stream = models.URLField()
 
     def __unicode__(self):
         return "%s - %s" % (self.chambre_id, self.title)
 
     def getWebmStream(self):
-        return '%s/webm/%s' % (VIDEOS, self.webm)
+        return '%s/webm/%s.%s' % (VIDEOS, self.video_id, 'webm')
 
     class Meta:
         ordering = ["-date"]

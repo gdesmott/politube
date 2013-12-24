@@ -36,7 +36,7 @@ class Pleniere (object):
         self.date = self._extractDate()
         self.title = self._extractTitle()
         self.stream = self._extractStream()
-        self.webm = self._webM()
+        self.video_id = self._extract_video_id()
         self.agenda = self._extractAgenda()
 
     def _extractDate(self):
@@ -93,11 +93,11 @@ class Pleniere (object):
 
         return agenda
 
-    def _webM(self):
+    def _extract_video_id(self):
         path = urlparse(self.stream).path
         f = path.split('/')[-1]
         base_name = f.split('.')[0]
-        return '%s.webm' % base_name
+        return base_name
 
 def find_all_plenieres():
     soup = BeautifulSoup(urllib2.urlopen (INDEX))
