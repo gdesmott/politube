@@ -6,13 +6,16 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chambre.settings")
 
 from fuzzywuzzy import process, utils
 
-from pleniere.models import Pleniere, AgendaItem, Deputy
+from pleniere.models import Pleniere, AgendaItem, Deputy,Party
 from pleniere.scrapper import find_all_plenieres
 import dieren
 
 def dropPlenieres():
     Pleniere.objects.all().delete()
     AgendaItem.objects.all().delete()
+
+def drop_parties():
+    Party.objects.all().delete()
 
 def dropDeputies():
     Deputy.objects.all().delete()
@@ -94,6 +97,9 @@ def linkPlenieresDeputies():
 if __name__ == '__main__':
     dropPlenieres()
     populatePlenieres()
+
+    drop_parties()
+    dieren.sync_parties()
 
     dropDeputies()
     dieren.syncDeputies()
