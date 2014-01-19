@@ -15,8 +15,14 @@ class Pleniere(models.Model):
     def __unicode__(self):
         return "%s - %s" % (self.chambre_id, self.title)
 
+    def getWmvStream(self):
+        return '%s/wmv/%s.%s' % (VIDEOS, self.video_id, 'wmv')
+
     def getWebmStream(self):
         return '%s/webm/%s.%s' % (VIDEOS, self.video_id, 'webm')
+
+    def getMp4Stream(self):
+        return '%s/mp4/%s.%s' % (VIDEOS, self.video_id, 'mp4')
 
     class Meta:
         ordering = ["-date"]
