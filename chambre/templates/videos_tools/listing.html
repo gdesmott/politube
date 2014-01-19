@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Videos</h1>
+<ul>
+<table id='videos-listing' border="2">
+<tr><th>Video</th> <th>MMS</th> <th>WMV</th> <th>H264</th> <th>WEBM</th> </tr>
+{% for v in videos %}
+
+{% ifchanged %}
+ <td colspan=5> <h4>{{ v.pleniere.date|date:"Y" }}</h4> </td>
+{% endifchanged %}
+
+<tr>
+  <td><a href="{% url 'pleniere' v.pleniere.id %}">{{ v.pleniere.video_id }}</a></td>
+    {% if v.mms_len %}
+      <td class="ok"><a href="{{ v.pleniere.stream }}">{{ v.format_mms_len }}</a></td>
+    {% else %}
+      <td class="todo"><a href="{{ v.pleniere.stream }}">TODO</a></td>
+    {% endif %}
+
+    {% if v.wmv_len %}
+      {% if v.wmv_is_ok %}
+        <td class="ok"><a href="{{ v.pleniere.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
+      {% else %}
+        <td class="warning"><a href="{{ v.pleniere.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
+      {% endif %}
+    {% else %}
+      <td class="todo"><a href="{{ v.pleniere.getWmvStream }}">TODO</a></td>
+    {% endif %}
+
+    {% if v.mp4_len %}
+      {% if v.mp4_is_ok %}
+        <td class="ok"><a href="{{ v.pleniere.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
+      {% else %}
+        <td class="warning"><a href="{{ v.pleniere.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
+      {% endif %}
+    {% else %}
+      <td class="todo"><a href="{{ v.pleniere.getMp4Stream }}">TODO</a></td>
+    {% endif %}
+
+    {% if v.webm_len %}
+      {% if v.webm_is_ok %}
+        <td class="ok"><a href="{{ v.pleniere.getWebmStream }}">{{ v.format_webm_len }}</a></td>
+      {% else %}
+        <td class="warning"><a href="{{ v.pleniere.getWebmStream }}">{{ v.format_webm_len }}</a></td>
+      {% endif %}
+    {% else %}
+      <td class="todo"><a href="{{ v.pleniere.getWebmStream }}">TODO</a></td>
+    {% endif %}
+</tr>
+{% endfor %}
+</table>
+</ul>
+
+{% endblock %}

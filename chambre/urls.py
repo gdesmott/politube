@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name="home.html"), name='home'),
     url(r'^pleniere/', include('pleniere.urls')),
     url(r'^deputy/', include('deputy.urls')),
+    url(r'^videos_tools/', include('videos_tools.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
