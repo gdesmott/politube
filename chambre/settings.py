@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'pleniere',
     'deputy',
+    'videos_tools',
 )
 
 # A sample logging configuration. The only tangible logging
