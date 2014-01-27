@@ -2,7 +2,9 @@ import datetime
 
 from django.db import models
 
-VIDEOS = 'http://agot.be/~lachambre/videos'
+VIDEOS_WMV = 'http://hackathon01.cblue.be/politube/videos/wmv'
+VIDEOS_MP4 = 'http://politu.be/~lachambre/videos/mp4'
+VIDEOS_WEBM = 'http://politu.be/~lachambre/videos/webm'
 
 class Pleniere(models.Model):
     chambre_id = models.CharField(max_length=200)
@@ -16,13 +18,13 @@ class Pleniere(models.Model):
         return "%s - %s" % (self.chambre_id, self.title)
 
     def getWmvStream(self):
-        return '%s/wmv/%s.%s' % (VIDEOS, self.video_id, 'wmv')
+        return '%s/%s.%s' % (VIDEOS_WMV, self.video_id, 'wmv')
 
     def getWebmStream(self):
-        return '%s/webm/%s.%s' % (VIDEOS, self.video_id, 'webm')
+        return '%s/%s.%s' % (VIDEOS_WEBM, self.video_id, 'webm')
 
     def getMp4Stream(self):
-        return '%s/mp4/%s.%s' % (VIDEOS, self.video_id, 'mp4')
+        return '%s/%s.%s' % (VIDEOS_MP4, self.video_id, 'mp4')
 
     class Meta:
         ordering = ["-date"]
