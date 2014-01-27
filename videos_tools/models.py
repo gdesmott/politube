@@ -40,7 +40,13 @@ class Video(models.Model):
         return self.wmv_len >= self.mms_len
 
     def mp4_is_ok(self):
+        if self.mp4_len is None:
+            return False
+
         return abs(self.mp4_len - self.mms_len) <= OK_THRESHOLD
 
     def webm_is_ok(self):
+        if self.webm_len is None:
+            return False
+
         return abs(self.webm_len - self.mms_len) <= OK_THRESHOLD
