@@ -99,17 +99,18 @@ class Pleniere (object):
         base_name = f.split('.')[0]
         return base_name
 
-def find_all_plenieres():
+def find_pleniere_ids():
     soup = BeautifulSoup(urllib2.urlopen (INDEX))
-    all = []
+    ids = []
 
     for e in soup.find_all(href=re.compile("viewarchivemeeting.cfm")):
-        i = re.search('.*meeting=(.*)', e['href']).group(1)
+        ids.append(re.search('.*meeting=(.*)', e['href']).group(1))
+    return ids
 
-        all.append(Pleniere(i))
-
-    return all
+def generate_pleniere():
+    for i in find_pleniere_ids():
+        yield Pleniere(i)
 
 if __name__ == '__main__':
-    for p in find_all_plenieres():
-        print p.id
+    for p in generate_pleniere():
+        print p.id, p.title

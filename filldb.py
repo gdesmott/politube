@@ -7,7 +7,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chambre.settings")
 from fuzzywuzzy import process, utils
 
 from pleniere.models import Pleniere, AgendaItem, Deputy,Party
-from pleniere.scrapper import find_all_plenieres
+from pleniere.scrapper import generate_pleniere
 import dieren
 
 def dropPlenieres():
@@ -21,7 +21,7 @@ def dropDeputies():
     Deputy.objects.all().delete()
 
 def populatePlenieres():
-    for p in find_all_plenieres():
+    for p in generate_pleniere():
         pleniere = Pleniere.objects.create(chambre_id=p.id,
                 source=p.source, date=p.date, title=p.title, video_id=p.video_id,
                 stream=p.stream)
