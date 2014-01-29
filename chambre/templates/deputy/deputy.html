@@ -28,7 +28,14 @@
 
 <ul>
 <li><a href="{% url 'pleniere' agenda.pleniere.id %}#{{ agenda.time }}">
-  {{ agenda.displayTime }}</a></li>
+  {% if agenda.subsection %}
+    {{ agenda.subsection }} ({{ agenda.displayTime }})
+  {% elif agenda.section %}
+    {{ agenda.section }} ({{ agenda.displayTime }})
+  {% else %}
+    {{ agenda.displayTime }}
+  {% endif %}
+ </a></li>
 </ul>
 
 {% endfor %}
