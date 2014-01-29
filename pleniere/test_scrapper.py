@@ -16,7 +16,7 @@ def test_scrapper_20130717():
     assert p.date.minute == 15
 
     assert p.stream == 'mms://193.191.129.52/Archive/20130717-1_bb_pl.wmv'
-    assert p.webm == '20130717-1_bb_pl.webm'
+    assert p.video_id == '20130717-1_bb_pl'
 
     assert len(p.agenda) == 160
 
@@ -44,7 +44,7 @@ def test_scrapper_20130307():
     assert p.date.minute == 15
 
     assert p.stream == 'mms://193.191.129.52/Archive/20130307-1_bb_pl.wmv'
-    assert p.webm == '20130307-1_bb_pl.webm'
+    assert p.video_id == '20130307-1_bb_pl'
 
     assert len(p.agenda) == 0
 
@@ -61,4 +61,4 @@ def test_scrapper_20121122():
     assert p.date.minute == 15
 
     assert p.stream == 'mms://193.191.129.52/Archive/20121122-2_bb_pl.wmv'
-    assert p.webm == '20121122-2_bb_pl.webm'
+    assert p.video_id == '20121122-2_bb_pl'
