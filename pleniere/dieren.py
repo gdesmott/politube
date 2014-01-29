@@ -1,6 +1,3 @@
-import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chambre.settings")
-
 import urllib2
 import json
 from pleniere.models import Deputy, Party
@@ -75,7 +72,3 @@ def sync_deputies():
         except Deputy.DoesNotExist:
             print "CREATE", args['full_name']
             Deputy.objects.create(**args)
-
-if __name__ == '__main__':
-    sync_parties()
-    sync_deputies()
