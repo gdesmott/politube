@@ -2,6 +2,8 @@
 
 import scrapper
 
+from collections import Counter
+
 def test_scrapper_20130717():
     p = scrapper.Pleniere('20130717-1')
 
@@ -62,3 +64,18 @@ def test_scrapper_20121122():
 
     assert p.stream == 'mms://193.191.129.52/Archive/20121122-2_bb_pl.wmv'
     assert p.video_id == '20121122-2_bb_pl'
+
+def test_ignore_not_pleniere():
+    # make sure we ignore not pleniere sessions
+    ids = scrapper.find_pleniere_ids()
+
+    assert '20140123-1' in ids
+    assert '20081008-1' not in ids
+
+def test_chambre_ids_unique():
+    # check that each chambre-id is unique
+    ids = scrapper.find_pleniere_ids()
+    c = Counter(ids)
+
+    for i in c:
+        assert c[i] == 1, i

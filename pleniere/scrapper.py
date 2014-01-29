@@ -103,7 +103,11 @@ def find_pleniere_ids():
     soup = BeautifulSoup(urllib2.urlopen (INDEX))
     ids = []
 
-    for e in soup.find_all(href=re.compile("viewarchivemeeting.cfm")):
+    # We want only 'plenieres' sessions and yeah that's the only way to
+    # identify the div containing them all...
+    main_div = soup.find('div', style='width: auto; height:400px; overflow: auto; border: 1px solid gray')
+
+    for e in main_div.find_all(href=re.compile("viewarchivemeeting.cfm")):
         ids.append(re.search('.*meeting=(.*)', e['href']).group(1))
     return ids
 
