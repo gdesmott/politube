@@ -102,6 +102,6 @@ if __name__ == '__main__':
     dieren.sync_parties()
 
     dropDeputies()
-    dieren.syncDeputies()
+    dieren.sync_deputies()
 
     linkPlenieresDeputies()

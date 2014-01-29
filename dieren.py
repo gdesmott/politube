@@ -58,7 +58,7 @@ def deputy_json_to_model(j):
 
     return v
 
-def syncDeputies():
+def sync_deputies():
     url = "http://www.dierentheater.be/api/v1/deputy/?format=json&limit=%d" % (LIMIT)
     data = urllib2.urlopen(url).read()
 
@@ -78,4 +78,4 @@ def syncDeputies():
 
 if __name__ == '__main__':
     sync_parties()
-    syncDeputies()
+    sync_deputies()
