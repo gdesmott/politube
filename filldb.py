@@ -8,7 +8,7 @@ from fuzzywuzzy import process, utils
 
 from pleniere.models import Pleniere, AgendaItem, Deputy,Party
 from pleniere.scrapper import generate_pleniere
-import dieren
+import pleniere.dieren
 
 def dropPlenieres():
     Pleniere.objects.all().delete()
@@ -99,9 +99,9 @@ if __name__ == '__main__':
     populatePlenieres()
 
     drop_parties()
-    dieren.sync_parties()
+    pleniere.dieren.sync_parties()
 
     dropDeputies()
-    dieren.sync_deputies()
+    pleniere.dieren.sync_deputies()
 
     linkPlenieresDeputies()
