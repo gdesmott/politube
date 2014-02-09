@@ -2,14 +2,14 @@
   height: 90px;
 }
 
-.todo {
+.video-todo {
     background-color: orange;
 }
 
-.warning {
+.video-warning {
     background-color: red;
 }
 
-.ok {
+.video-ok {
     background-color: green;
 }
