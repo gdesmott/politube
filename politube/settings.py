@@ -1,4 +1,4 @@
-# Django settings for chambre project.
+# Django settings for politube project.
 
 import os
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
@@ -107,10 +107,10 @@ MIDDLEWARE_CLASSES = (
     'django_pdb.middleware.PdbMiddleware',
 )
 
-ROOT_URLCONF = 'chambre.urls'
+ROOT_URLCONF = 'politube.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'chambre.wsgi.application'
+WSGI_APPLICATION = 'politube.wsgi.application'
 
 TEMPLATE_DIRS = (
     PROJECT_PATH + '/templates',
