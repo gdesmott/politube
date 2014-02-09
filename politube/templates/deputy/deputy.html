@@ -21,9 +21,10 @@
 
 </div>
 
+<h2 id='speaches'>Interventions en séance plénière</h2>
 {% for agenda in deputy.getSortedItems %}
 
-{% ifchanged %} <h2>{{ agenda.pleniere.date|date:"Y" }}</h2> {% endifchanged %}
+{% ifchanged %} <h3>{{ agenda.pleniere.date|date:"Y" }}</h3> {% endifchanged %}
 {% ifchanged %} <h4><a href="{% url 'pleniere' agenda.pleniere.id %}">{{ agenda.pleniere.title }} -
     {{ agenda.pleniere.date|date:"d M Y" }}</a></h4> {% endifchanged %}
 
