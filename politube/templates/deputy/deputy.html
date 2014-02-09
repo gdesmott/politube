@@ -10,8 +10,7 @@
 
   <div class="col-md-10">
     <address>
-    <strong>{{deputy.party.name}}</strong><br>
-    {{ deputy.language }}<br>
+    {{deputy.party.name}} - {{ deputy.language }}<br>
     <a href='mailto:{{ deputy.email }}'>{{ deputy.email }}</a><br>
     {% if deputy.website %}
     <a href='{{deputy.website}}'>{{deputy.website}}</a><br>
