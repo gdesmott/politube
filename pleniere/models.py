@@ -28,6 +28,7 @@ class Pleniere(models.Model):
 
     class Meta:
         ordering = ["-date"]
+        get_latest_by = "date"
 
 class Party(models.Model):
     dieren_id = models.CharField(max_length=200, primary_key=True)
