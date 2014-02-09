@@ -2,7 +2,24 @@
 
 {% block content %}
 <div class="page-header">
-  <h1>Politu.be</h1>
+  <p class="lead">Bienvenu sur <a href="{% url 'home' %}">Politu.be</a></p>
+
+  <p class="lead">Ce site a pour but de
+  rendre facilement consultable les <a href="{% url 'pleniere-list' %}">vidéos des séances plénières</a> de la
+  <a href="http://www.lachambre.be">Chambre des représentants de Belgique</a>.
+  Il permet également de consulter <a href="{% url 'deputy-list' %}">la liste des députés</a>
+  siégeant à la chambre et d'accéder rapidement à leurs différentes interventions en séances plénières.</p>
+
+  <h2><small>À propos</small></h2>
+  <p><a href="{% url 'home' %}">Politu.be</a> est un projet citoyen libre et
+  gratuit se voulant neutre politiquement. Il a pour but de rendre les débats
+  parlementaires le plus transparent possible afin de donner aux
+  électeurs une vision claire du travail de leurs élus.</p>
+
+  <p>Nous vous invitons à
+  consulter également le site <a href="http://www.noselus.be/">Noselus.be</a>
+  proposant des services similaires pour le parlement fédéral et wallon.
+  </p>
 </div>
 <p class="lead"></p>
 {% endblock %}
