@@ -17,6 +17,12 @@
   Il permet également de consulter <a href="{% url 'deputy-list' %}">la liste des députés</a>
   siégeant à la chambre et d'accéder rapidement à leurs différentes interventions en séances plénières.</p>
 
+  <div class="alert alert-warning">
+    Certaines vidéos ne sont malheureusement pas encore disponibles, veuillez nous en excuser. Elles devraient être
+    ajoutées sous peu. En attendant, vous pouvez consulter <a href="{% url 'videos-list' %}">le listing des vidéos</a> pour vérifier
+    la disponibilité des différentes vidéos.
+  </div>
+
   {% if plenary %}
   <div id="latest-plenary" class="panel panel-default">
     <div class="panel-heading">
