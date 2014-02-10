@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/pleniere.js"></script>
+
+<link rel="stylesheet" href="{{ STATIC_URL }}mediaelement/mediaelementplayer.css" />
+{% endblock %}
+
 {% block content %}
 <div class="page-header">
   <p class="lead">Bienvenu sur <a href="{% url 'home' %}">Politu.be</a></p>
