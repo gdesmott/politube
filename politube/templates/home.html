@@ -10,6 +10,7 @@
   Il permet également de consulter <a href="{% url 'deputy-list' %}">la liste des députés</a>
   siégeant à la chambre et d'accéder rapidement à leurs différentes interventions en séances plénières.</p>
 
+  {% if deputy %}
   <div id="random-deputy" class="panel panel-default">
     <div class="panel-heading">
       <h3>{% if deputy.sex == 'F' %} Une parlementaire {% else %} Un parlementaire {% endif %}</h3>
@@ -35,6 +36,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 
   <h2><small>À propos</small></h2>
   <p><a href="{% url 'home' %}">Politu.be</a> est un projet citoyen libre,
