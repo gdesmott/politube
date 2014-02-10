@@ -32,7 +32,6 @@ class Command(BaseCommand):
                 Pleniere.objects.get(chambre_id=i)
             except Pleniere.DoesNotExist:
                 sp = pleniere.scrapper.Pleniere(i)
-                print "Add", sp
 
                 p = Pleniere.objects.create(chambre_id=sp.id,
                         source=sp.source, date=sp.date, title=sp.title, video_id=sp.video_id,
