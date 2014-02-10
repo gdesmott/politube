@@ -7,7 +7,7 @@ def home(request):
     args = {}
 
     try:
-      args['plenary'] = Pleniere.objects.latest('')
+      args['plenary'] = Pleniere.objects.latest()
     except Pleniere.DoesNotExist:
         pass
 
