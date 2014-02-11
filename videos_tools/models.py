@@ -1,7 +1,7 @@
 import datetime
 from django.db import models
 
-from pleniere.models import Pleniere
+from plenary.models import Pleniere
 
 # in seconds
 OK_THRESHOLD = 5

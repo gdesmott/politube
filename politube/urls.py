@@ -8,7 +8,7 @@ import politube.views
 
 urlpatterns = patterns('',
     url(r'^$', politube.views.home, name='home'),
-    url(r'^pleniere/', include('pleniere.urls')),
+    url(r'^plenary/', include('plenary.urls')),
     url(r'^deputy/', include('deputy.urls')),
     url(r'^videos_tools/', include('videos_tools.urls')),
 

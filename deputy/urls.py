@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic import ListView, DetailView
 
-from pleniere.models import Deputy
+from plenary.models import Deputy
 
 urlpatterns = patterns('',
   url(r'^$', ListView.as_view(model=Deputy,

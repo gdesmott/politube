@@ -2,9 +2,9 @@ from django.core.management.base import BaseCommand
 from optparse import make_option
 from fuzzywuzzy import process, utils
 
-import pleniere.scrapper
-import pleniere.dieren
-from pleniere.models import Pleniere, AgendaItem, Deputy,Party
+import plenary.scrapper
+import plenary.dieren
+from plenary.models import Pleniere, AgendaItem, Deputy,Party
 
 IGNORED = ['voorzitter', 'einde', 'fin', 'reprise', 'volgende']
 PREFIXES = ['min.', 'staatssecretaris', 'premier', '1m']
@@ -27,11 +27,11 @@ class Command(BaseCommand):
         Deputy.objects.all().delete()
 
     def _update_pleniere(self):
-        for i in pleniere.scrapper.find_pleniere_ids():
+        for i in plenary.scrapper.find_pleniere_ids():
             try:
                 Pleniere.objects.get(chambre_id=i)
             except Pleniere.DoesNotExist:
-                sp = pleniere.scrapper.Pleniere(i)
+                sp = plenary.scrapper.Pleniere(i)
 
                 p = Pleniere.objects.create(chambre_id=sp.id,
                         source=sp.source, date=sp.date, title=sp.title, video_id=sp.video_id,
@@ -106,6 +106,6 @@ class Command(BaseCommand):
             self._clean_db()
 
         self._update_pleniere()
-        pleniere.dieren.sync_parties()
-        pleniere.dieren.sync_deputies()
+        plenary.dieren.sync_parties()
+        plenary.dieren.sync_deputies()
         self._link_plenieres_deputies()

@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django_pdb',
     'django_extensions',
-    'pleniere',
+    'plenary',
     'deputy',
     'videos_tools',
 )

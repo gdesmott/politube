@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from optparse import make_option
 
-from pleniere.models import Pleniere
+from plenary.models import Pleniere
 from videos_tools.models import Video
 from videos_tools.extract_len import extract_video_len
 

@@ -1,7 +1,7 @@
 import random
 from django.shortcuts import render
 
-from pleniere.models import Pleniere, Deputy
+from plenary.models import Pleniere, Deputy
 
 def home(request):
     args = {}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from pleniere.models import Pleniere, AgendaItem, Deputy, Party
+from plenary.models import Pleniere, AgendaItem, Deputy, Party
 
 admin.site.register(Pleniere)
 admin.site.register(AgendaItem)

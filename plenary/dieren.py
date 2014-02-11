@@ -1,6 +1,6 @@
 import urllib2
 import json
-from pleniere.models import Deputy, Party
+from plenary.models import Deputy, Party
 
 LIMIT = 200
 
