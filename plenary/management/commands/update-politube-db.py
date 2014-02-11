@@ -27,11 +27,11 @@ class Command(BaseCommand):
         Deputy.objects.all().delete()
 
     def _update_pleniere(self):
-        for i in plenary.scrapper.find_pleniere_ids():
+        for i in plenary.scrapper.find_plenary_ids():
             try:
                 Plenary.objects.get(chambre_id=i)
             except Plenary.DoesNotExist:
-                sp = plenary.scrapper.Pleniere(i)
+                sp = plenary.scrapper.Plenary(i)
 
                 p = Plenary.objects.create(chambre_id=sp.id,
                         source=sp.source, date=sp.date, title=sp.title, video_id=sp.video_id,

@@ -25,7 +25,7 @@ class AgendaItem(object):
         self.section = encode_or_none(section)
         self.subsection = encode_or_none(subsection)
 
-class Pleniere (object):
+class Plenary (object):
     def __init__(self, i):
         self.id = i
 
@@ -99,11 +99,11 @@ class Pleniere (object):
         base_name = f.split('.')[0]
         return base_name
 
-def find_pleniere_ids():
+def find_plenary_ids():
     soup = BeautifulSoup(urllib2.urlopen (INDEX))
     ids = []
 
-    # We want only 'plenieres' sessions and yeah that's the only way to
+    # We want only 'plenaries' sessions and yeah that's the only way to
     # identify the div containing them all...
     main_div = soup.find('div', style='width: auto; height:400px; overflow: auto; border: 1px solid gray')
 
@@ -111,10 +111,10 @@ def find_pleniere_ids():
         ids.append(re.search('.*meeting=(.*)', e['href']).group(1))
     return ids
 
-def generate_pleniere():
-    for i in find_pleniere_ids():
-        yield Pleniere(i)
+def generate_plenary():
+    for i in find_plenary_ids():
+        yield Plenary(i)
 
 if __name__ == '__main__':
-    for p in generate_pleniere():
+    for p in generate_plenary():
         print p.id, p.title
