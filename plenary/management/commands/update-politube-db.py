@@ -26,7 +26,7 @@ class Command(BaseCommand):
         Party.objects.all().delete()
         Deputy.objects.all().delete()
 
-    def _update_pleniere(self):
+    def _update_plenary(self):
         for i in plenary.scrapper.find_plenary_ids():
             try:
                 Plenary.objects.get(chambre_id=i)
@@ -61,7 +61,7 @@ class Command(BaseCommand):
 
         return l
 
-    def _link_plenieres_deputies(self):
+    def _link_plenary_deputies(self):
         queryset = Deputy.objects.all()
 
         # items = AgendaItem.objects.all()
@@ -105,7 +105,7 @@ class Command(BaseCommand):
         if options['force-update']:
             self._clean_db()
 
-        self._update_pleniere()
+        self._update_plenary()
         plenary.dieren.sync_parties()
         plenary.dieren.sync_deputies()
-        self._link_plenieres_deputies()
+        self._link_plenary_deputies()
