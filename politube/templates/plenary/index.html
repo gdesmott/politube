@@ -3,9 +3,9 @@
 {% block content %}
 <h1>Séances plénières</h1>
 <ul>
-{% for p in plenieres %}
+{% for p in plenaries %}
 {% ifchanged %} <h2> {{ p.date|date:"Y" }} </h2> {% endifchanged %}
-<li><a href="{% url 'pleniere' p.id %}">{{ p.title }} - {{ p.date|date:"d M Y" }}</a></li>
+<li><a href="{% url 'plenary' p.id %}">{{ p.title }} - {{ p.date|date:"d M Y" }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

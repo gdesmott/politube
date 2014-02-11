@@ -12,7 +12,7 @@
   <p class="lead">Bienvenu sur <a href="{% url 'home' %}">Politu.be</a></p>
 
   <p class="lead">Ce site a pour but de
-  rendre facilement consultable les <a href="{% url 'pleniere-list' %}">vidéos des séances plénières</a> de la
+  rendre facilement consultable les <a href="{% url 'plenary-list' %}">vidéos des séances plénières</a> de la
   <a href="http://www.lachambre.be">Chambre des représentants de Belgique</a>.
   Il permet également de consulter <a href="{% url 'deputy-list' %}">la liste des députés</a>
   siégeant à la chambre et d'accéder rapidement à leurs différentes interventions en séances plénières.</p>
@@ -32,7 +32,7 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-5">
-          <a href="{% url 'pleniere' plenary.id %}#1">
+          <a href="{% url 'plenary' plenary.id %}#1">
             <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
             <source src='{{ plenary.getMp4Stream }}' type="video/mp4"/>
             <source src='{{ plenary.getWebmStream }}' type="video/webm"/>
@@ -41,7 +41,7 @@
           </a>
         </div>
         <div class="col-md-7">
-          <p><a href="{% url 'pleniere' plenary.id %}#1"><b>{{plenary.title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
+          <p><a href="{% url 'plenary' plenary.id %}#1"><b>{{plenary.title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
           <ul>
           {% for agenda in plenary.agendaitem_set.all %}
             {% if agenda.subsection %}
@@ -49,7 +49,7 @@
             {% endif %}
           {% endfor %}
           </ul>
-          <p><b><a href="{% url 'pleniere' plenary.id %}#1">Visionner cette séance</a></b></p>
+          <p><b><a href="{% url 'plenary' plenary.id %}#1">Visionner cette séance</a></b></p>
         </div>
       </div>
     </div>
