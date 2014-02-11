@@ -50,3 +50,6 @@ class Video(models.Model):
             return False
 
         return abs(self.webm_len - self.mms_len) <= OK_THRESHOLD
+
+    class Meta:
+        ordering = ["-pleniere__date"]
