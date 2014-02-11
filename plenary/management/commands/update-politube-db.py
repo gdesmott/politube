@@ -27,7 +27,12 @@ class Command(BaseCommand):
         Deputy.objects.all().delete()
 
     def _update_plenary(self):
-        for i in plenary.scrapper.find_plenary_ids():
+        ids =  plenary.scrapper.find_plenary_ids()
+        # Start numerating from the oldest plenaries so we'll preserve primary
+        # IDs, and so URL, if we have to recreate the DB
+        ids.reverse()
+
+        for i in ids:
             try:
                 Plenary.objects.get(chambre_id=i)
             except Plenary.DoesNotExist:
