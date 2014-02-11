@@ -8,45 +8,45 @@
 {% for v in videos %}
 
 {% ifchanged %}
- <td colspan=5> <h4>{{ v.pleniere.date|date:"Y" }}</h4> </td>
+ <td colspan=5> <h4>{{ v.plenary.date|date:"Y" }}</h4> </td>
 {% endifchanged %}
 
 <tr>
-  <td><a href="{% url 'pleniere' v.pleniere.id %}">{{ v.pleniere.video_id }}</a></td>
+  <td><a href="{% url 'plenary' v.plenary.id %}">{{ v.plenary.video_id }}</a></td>
     {% if v.mms_len %}
-      <td class="success"><a href="{{ v.pleniere.stream }}">{{ v.format_mms_len }}</a></td>
+      <td class="success"><a href="{{ v.plenary.stream }}">{{ v.format_mms_len }}</a></td>
     {% else %}
-      <td class="danger"><a href="{{ v.pleniere.stream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.stream }}">TODO</a></td>
     {% endif %}
 
     {% if v.wmv_len %}
       {% if v.wmv_is_ok %}
-        <td class="success"><a href="{{ v.pleniere.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
+        <td class="success"><a href="{{ v.plenary.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
       {% else %}
-        <td class="warning"><a href="{{ v.pleniere.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
+        <td class="warning"><a href="{{ v.plenary.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
       {% endif %}
     {% else %}
-      <td class="danger"><a href="{{ v.pleniere.getWmvStream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.getWmvStream }}">TODO</a></td>
     {% endif %}
 
     {% if v.mp4_len %}
       {% if v.mp4_is_ok %}
-        <td class="success"><a href="{{ v.pleniere.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
+        <td class="success"><a href="{{ v.plenary.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
       {% else %}
-        <td class="warning"><a href="{{ v.pleniere.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
+        <td class="warning"><a href="{{ v.plenary.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
       {% endif %}
     {% else %}
-      <td class="danger"><a href="{{ v.pleniere.getMp4Stream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.getMp4Stream }}">TODO</a></td>
     {% endif %}
 
     {% if v.webm_len %}
       {% if v.webm_is_ok %}
-        <td class="success"><a href="{{ v.pleniere.getWebmStream }}">{{ v.format_webm_len }}</a></td>
+        <td class="success"><a href="{{ v.plenary.getWebmStream }}">{{ v.format_webm_len }}</a></td>
       {% else %}
-        <td class="warning"><a href="{{ v.pleniere.getWebmStream }}">{{ v.format_webm_len }}</a></td>
+        <td class="warning"><a href="{{ v.plenary.getWebmStream }}">{{ v.format_webm_len }}</a></td>
       {% endif %}
     {% else %}
-      <td class="danger"><a href="{{ v.pleniere.getWebmStream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.getWebmStream }}">TODO</a></td>
     {% endif %}
 </tr>
 {% endfor %}

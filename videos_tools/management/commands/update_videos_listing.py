@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from optparse import make_option
 
-from plenary.models import Pleniere
+from plenary.models import Plenary
 from videos_tools.models import Video
 from videos_tools.extract_len import extract_video_len
 
@@ -34,38 +34,38 @@ class Command(BaseCommand):
         return t.seconds
 
     def handle(self, *args, **options):
-        for pleniere in Pleniere.objects.all():
+        for plenary in Plenary.objects.all():
             changed = False
 
             try:
-                video = Video.objects.get(pleniere=pleniere)
+                video = Video.objects.get(plenary=plenary)
             except Video.DoesNotExist:
-                video = Video.objects.create(pleniere=pleniere)
+                video = Video.objects.create(plenary=plenary)
 
             if video.mms_len is None or options['force-mms']:
                 try:
-                    video.mms_len = self._get_video_len(pleniere.stream)
+                    video.mms_len = self._get_video_len(plenary.stream)
                     changed = True
                 except ValueError:
                     pass
 
             if video.wmv_len is None or options['force-wmv']:
                 try:
-                    video.wmv_len = self._get_video_len(pleniere.getWmvStream())
+                    video.wmv_len = self._get_video_len(plenary.getWmvStream())
                     changed = True
                 except ValueError:
                     pass
 
             if video.mp4_len is None or options['force-mp4']:
                 try:
-                    video.mp4_len = self._get_video_len(pleniere.getMp4Stream())
+                    video.mp4_len = self._get_video_len(plenary.getMp4Stream())
                     changed = True
                 except ValueError:
                     pass
 
             if video.webm_len is None or options['force-webm']:
                 try:
-                    video.webm_len = self._get_video_len(pleniere.getWebmStream())
+                    video.webm_len = self._get_video_len(plenary.getWebmStream())
                     changed = True
                 except ValueError:
                     pass

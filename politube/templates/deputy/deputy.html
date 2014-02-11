@@ -24,12 +24,12 @@
 <h2 id='speaches'>Interventions en séance plénière</h2>
 {% for agenda in deputy.getSortedItems %}
 
-{% ifchanged %} <h3>{{ agenda.pleniere.date|date:"Y" }}</h3> {% endifchanged %}
-{% ifchanged %} <h4><a href="{% url 'pleniere' agenda.pleniere.id %}">{{ agenda.pleniere.title }} -
-    {{ agenda.pleniere.date|date:"d M Y" }}</a></h4> {% endifchanged %}
+{% ifchanged %} <h3>{{ agenda.plenary.date|date:"Y" }}</h3> {% endifchanged %}
+{% ifchanged %} <h4><a href="{% url 'pleniere' agenda.plenary.id %}">{{ agenda.plenary.title }} -
+    {{ agenda.plenary.date|date:"d M Y" }}</a></h4> {% endifchanged %}
 
 <ul>
-<li><a href="{% url 'pleniere' agenda.pleniere.id %}#{{ agenda.time }}">
+<li><a href="{% url 'pleniere' agenda.plenary.id %}#{{ agenda.time }}">
   {% if agenda.subsection %}
     {{ agenda.subsection }} ({{ agenda.displayTime }})
   {% elif agenda.section %}

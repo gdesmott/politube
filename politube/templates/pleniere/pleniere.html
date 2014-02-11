@@ -8,17 +8,17 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ pleniere.title }} - {{ pleniere.date|date:"d m Y H:i" }}</h1>
-<p><a href='{{ pleniere.source }}'>source</a></p>
+<h1>{{ plenary.title }} - {{ plenary.date|date:"d m Y H:i" }}</h1>
+<p><a href='{{ plenary.source }}'>source</a></p>
 
 <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
-<source src='{{ pleniere.getMp4Stream }}' type="video/mp4"/>
-<source src='{{ pleniere.getWebmStream }}' type="video/webm"/>
+<source src='{{ plenary.getMp4Stream }}' type="video/mp4"/>
+<source src='{{ plenary.getWebmStream }}' type="video/webm"/>
 Your browser does not support the video tag.
 </video>
 
 <ul>
-{% for agenda in pleniere.agendaitem_set.all %}
+{% for agenda in plenary.agendaitem_set.all %}
 
 {% if agenda.section %}
   {% ifchanged %} <h2> {{ agenda.section }} </h2>  {% endifchanged %}

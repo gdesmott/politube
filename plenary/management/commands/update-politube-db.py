@@ -4,7 +4,7 @@ from fuzzywuzzy import process, utils
 
 import plenary.scrapper
 import plenary.dieren
-from plenary.models import Pleniere, AgendaItem, Deputy,Party
+from plenary.models import Plenary, AgendaItem, Deputy,Party
 
 IGNORED = ['voorzitter', 'einde', 'fin', 'reprise', 'volgende']
 PREFIXES = ['min.', 'staatssecretaris', 'premier', '1m']
@@ -21,7 +21,7 @@ class Command(BaseCommand):
 
     def _clean_db(self):
         print "Clean DB"
-        Pleniere.objects.all().delete()
+        Plenary.objects.all().delete()
         AgendaItem.objects.all().delete()
         Party.objects.all().delete()
         Deputy.objects.all().delete()
@@ -29,16 +29,16 @@ class Command(BaseCommand):
     def _update_pleniere(self):
         for i in plenary.scrapper.find_pleniere_ids():
             try:
-                Pleniere.objects.get(chambre_id=i)
-            except Pleniere.DoesNotExist:
+                Plenary.objects.get(chambre_id=i)
+            except Plenary.DoesNotExist:
                 sp = plenary.scrapper.Pleniere(i)
 
-                p = Pleniere.objects.create(chambre_id=sp.id,
+                p = Plenary.objects.create(chambre_id=sp.id,
                         source=sp.source, date=sp.date, title=sp.title, video_id=sp.video_id,
                         stream=sp.stream)
 
                 for a in sp.agenda:
-                    AgendaItem.objects.create(pleniere=p,
+                    AgendaItem.objects.create(plenary=p,
                         time=a.time, speaker=a.name, section=a.section, subsection=a.subsection)
 
     def _strip_speaker_name(self, speaker):
@@ -66,7 +66,7 @@ class Command(BaseCommand):
 
         # items = AgendaItem.objects.all()
         # Start from 2010 for now as we don't have old deputies anyway
-        items = AgendaItem.objects.filter(pleniere__date__gt='2010-01-01', speaker_id=None)
+        items = AgendaItem.objects.filter(plenary__date__gt='2010-01-01', speaker_id=None)
 
         count = -1
         tot = len(items)

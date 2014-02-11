@@ -6,7 +6,7 @@ VIDEOS_WMV = 'http://hackathon01.cblue.be/politube/videos/wmv'
 VIDEOS_MP4 = 'http://politu.be/~lachambre/videos/mp4'
 VIDEOS_WEBM = 'http://politu.be/~lachambre/videos/webm'
 
-class Pleniere(models.Model):
+class Plenary(models.Model):
     chambre_id = models.CharField(max_length=200)
     source = models.URLField()
     date = models.DateTimeField('date')
@@ -64,10 +64,10 @@ class Deputy(models.Model):
         ordering = ["party", "full_name"]
 
     def getSortedItems(self):
-        return self.agendaitem_set.all().order_by('pleniere', 'time')
+        return self.agendaitem_set.all().order_by('plenary', 'time')
 
 class AgendaItem(models.Model):
-    pleniere = models.ForeignKey(Pleniere)
+    plenary = models.ForeignKey(Plenary)
     # time in seconds
     time = models.IntegerField()
     speaker = models.CharField(max_length=200)
@@ -76,7 +76,7 @@ class AgendaItem(models.Model):
     speaker_id = models.ForeignKey(Deputy, null=True)
 
     def __unicode__(self):
-        return "%s - %s (%s)" % (self.speaker, self.pleniere.title, self.time)
+        return "%s - %s (%s)" % (self.speaker, self.plenary.title, self.time)
 
     def displayTime(self):
         return str(datetime.timedelta(seconds=self.time))

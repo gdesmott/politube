@@ -1,14 +1,14 @@
 import random
 from django.shortcuts import render
 
-from plenary.models import Pleniere, Deputy
+from plenary.models import Plenary, Deputy
 
 def home(request):
     args = {}
 
     try:
-      args['plenary'] = Pleniere.objects.latest()
-    except Pleniere.DoesNotExist:
+      args['plenary'] = Plenary.objects.latest()
+    except Plenary.DoesNotExist:
         pass
 
     deputies = Deputy.objects.all()

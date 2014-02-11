@@ -26,10 +26,10 @@ class Command(BaseCommand):
         for video in Video.objects.all():
             if options['mms']:
                 if not video.wmv_is_ok():
-                    print video.pleniere.stream
+                    print video.plenary.stream
             elif options['mp4']:
                 if video.wmv_is_ok() and not video.mp4_is_ok():
-                    print "%s %s" % (video.pleniere.getWmvStream(), video.pleniere.getMp4Stream())
+                    print "%s %s" % (video.plenary.getWmvStream(), video.plenary.getMp4Stream())
             elif options['webm']:
                 if video.wmv_is_ok() and not video.webm_is_ok():
-                    print "%s %s" % (video.pleniere.getWmvStream(), video.pleniere.getWebmStream())
+                    print "%s %s" % (video.plenary.getWmvStream(), video.plenary.getWebmStream())

@@ -1,13 +1,13 @@
 import datetime
 from django.db import models
 
-from plenary.models import Pleniere
+from plenary.models import Plenary
 
 # in seconds
 OK_THRESHOLD = 5
 
 class Video(models.Model):
-    pleniere = models.ForeignKey(Pleniere)
+    plenary = models.ForeignKey(Plenary)
 
     # len are in seconds
     mms_len = models.IntegerField(null=True)
@@ -16,7 +16,7 @@ class Video(models.Model):
     webm_len = models.IntegerField(null=True)
 
     def __unicode__(self):
-        return "Videos of '%s'" % (self.pleniere.chambre_id)
+        return "Videos of '%s'" % (self.plenary.chambre_id)
 
     # format len
     def _format_len(self, l):
@@ -52,4 +52,4 @@ class Video(models.Model):
         return abs(self.webm_len - self.mms_len) <= OK_THRESHOLD
 
     class Meta:
-        ordering = ["-pleniere__date"]
+        ordering = ["-plenary__date"]
