@@ -1,3 +1,4 @@
+{% load piwik_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,5 +60,6 @@ f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.f
     </div>
 
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    {% tracking_code %}
   </body>
 </html>
