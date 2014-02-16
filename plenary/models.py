@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 
 VIDEOS_WMV = 'http://hackathon01.cblue.be/politube/videos/wmv'
-VIDEOS_MP4 = 'http://politu.be/~lachambre/videos/mp4'
+VIDEOS_MP4 = 'http://mp4.politu.be'
 VIDEOS_WEBM = 'http://politu.be/~lachambre/videos/webm'
 
 class Plenary(models.Model):
