@@ -2,11 +2,32 @@
 
 {% block content %}
 <h1>Deputies</h1>
-<ul>
-{% for d in deputies %}
-{% ifchanged %} <h2>{{d.party.name}}</h2> {% endifchanged %}
-<li><a href="{% url 'deputy' d.dieren_id %}">{{ d.full_name }}</a></li>
+
+{% regroup deputies by party as parties %}
+{% for p in parties %}
+<h2>{{p.grouper.name}}</h2>
+  <div class="container">
+    <div class="row">
+  {% for d in p.list %}
+    {% if forloop.counter0|divisibleby:"6" %}
+      </div>
+      <div class="row">
+    {% endif %}
+
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="{% url 'deputy' d.dieren_id %}"><img src="{{d.photo_uri}}" class="img-rounded"></a>
+        <div class="caption">
+          <h3 class="text-center"><a href="{% url 'deputy' d.dieren_id %}">{{d.full_name}}</a></h3>
+        </div>
+      </div>
+    </div>
+
+    {% if forloop.last %}
+      </div>
+    {% endif %}
+    {% endfor %}
+  </div>
 {% endfor %}
-</ul>
 
 {% endblock %}
