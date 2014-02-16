@@ -164,3 +164,8 @@ LOGGING = {
 
 PIWIK_SITE_ID=1
 PIWIK_URL='http://piwik.politu.be/'
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
