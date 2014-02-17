@@ -13,3 +13,16 @@
 .video-ok {
     background-color: green;
 }
+
+.pt-sidenavbar li>a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  padding: 4px 20px;
+}
+
+.pt-sidenavbar .active>a {
+  font-weight: 700;
+  color: #18bc9c;
+  border-left: 2px solid #18bc9c;
+}
