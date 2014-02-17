@@ -2,18 +2,6 @@
   height: 90px;
 }
 
-.video-todo {
-    background-color: orange;
-}
-
-.video-warning {
-    background-color: red;
-}
-
-.video-ok {
-    background-color: green;
-}
-
 .pt-sidenavbar li>a {
   font-size: 13px;
   font-weight: 500;
