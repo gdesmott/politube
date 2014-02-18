@@ -36,6 +36,9 @@ class Video(models.Model):
 
     # is the video considered as 'ok'
     def wmv_is_ok(self):
+        if self.wmv_len is None:
+            return False
+
         # WMV seems to be longer than MMS for some reason
         return self.wmv_len >= self.mms_len
 
