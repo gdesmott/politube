@@ -8,9 +8,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-  <p class="lead">Bienvenue sur <a href="{% url 'home' %}">Politu.be</a></p>
 
+<img src="{{ STATIC_URL }}/images/banner.jpg" class="img-responsive"/>
+
+<div class="page-header">
   <p class="lead">Ce site a pour but de
   rendre facilement consultables les <a href="{% url 'plenary-list' %}">vidéos des séances plénières</a> de la
   <a href="http://www.lachambre.be">Chambre des représentants de Belgique</a>.
