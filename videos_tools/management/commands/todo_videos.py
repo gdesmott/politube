@@ -20,6 +20,11 @@ class Command(BaseCommand):
           dest='webm',
           default=False,
           help='Generate list of WEBM videos'),
+       make_option('--ignore-missing-wmv',
+          action='store_true',
+          dest='ignore_wmv',
+          default=False,
+          help='Ignore is WMV file is missing for MP4/webm')
     )
 
     def handle(self, *args, **options):
@@ -28,8 +33,8 @@ class Command(BaseCommand):
                 if not video.wmv_is_ok():
                     print video.plenary.stream
             elif options['mp4']:
-                if video.wmv_is_ok() and not video.mp4_is_ok():
+                if (options['ignore_wmv'] or video.wmv_is_ok()) and not video.mp4_is_ok():
                     print "%s %s" % (video.plenary.getWmvStream(), video.plenary.getMp4Stream())
             elif options['webm']:
-                if video.wmv_is_ok() and not video.webm_is_ok():
+                if (options['ignore_wmv'] or video.wmv_is_ok()) and not video.webm_is_ok():
                     print "%s %s" % (video.plenary.getWmvStream(), video.plenary.getWebmStream())
