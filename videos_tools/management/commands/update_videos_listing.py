@@ -49,21 +49,21 @@ class Command(BaseCommand):
                 except ValueError:
                     pass
 
-            if video.wmv_len is None or options['force-wmv']:
+            if not video.wmv_is_ok() or options['force-wmv']:
                 try:
                     video.wmv_len = self._get_video_len(plenary.getWmvStream())
                     changed = True
                 except ValueError:
                     pass
 
-            if video.mp4_len is None or options['force-mp4']:
+            if not video.mp4_is_ok() or options['force-mp4']:
                 try:
                     video.mp4_len = self._get_video_len(plenary.getMp4Stream())
                     changed = True
                 except ValueError:
                     pass
 
-            if video.webm_len is None or options['force-webm']:
+            if not video.webm_is_ok() or options['force-webm']:
                 try:
                     video.webm_len = self._get_video_len(plenary.getWebmStream())
                     changed = True
