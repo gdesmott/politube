@@ -66,13 +66,13 @@ class Command(BaseCommand):
                 except ValueError:
                     pass
 
-            if not video.webm_is_ok() or options['force-webm']:
-                try:
-                    print "update WEBM", plenary.getWebmStream()
-                    video.webm_len = self._get_video_len(plenary.getWebmStream())
-                    changed = True
-                except ValueError:
-                    pass
+            #if not video.webm_is_ok() or options['force-webm']:
+            #    try:
+            #        print "update WEBM", plenary.getWebmStream()
+            #        video.webm_len = self._get_video_len(plenary.getWebmStream())
+            #        changed = True
+            #    except ValueError:
+            #        pass
 
             if changed:
                 video.save()
