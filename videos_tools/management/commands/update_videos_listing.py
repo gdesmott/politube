@@ -44,6 +44,7 @@ class Command(BaseCommand):
 
             if video.mms_len is None or options['force-mms']:
                 try:
+                    print "update MMS", plenary.stream
                     video.mms_len = self._get_video_len(plenary.stream)
                     changed = True
                 except ValueError:
@@ -51,6 +52,7 @@ class Command(BaseCommand):
 
             if not video.wmv_is_ok() or options['force-wmv']:
                 try:
+                    print "update WMV", plenary.getWebmStream()
                     video.wmv_len = self._get_video_len(plenary.getWmvStream())
                     changed = True
                 except ValueError:
@@ -58,6 +60,7 @@ class Command(BaseCommand):
 
             if not video.mp4_is_ok() or options['force-mp4']:
                 try:
+                    print "update MP4", plenary.getMp4Stream()
                     video.mp4_len = self._get_video_len(plenary.getMp4Stream())
                     changed = True
                 except ValueError:
@@ -65,6 +68,7 @@ class Command(BaseCommand):
 
             if not video.webm_is_ok() or options['force-webm']:
                 try:
+                    print "update WEBM", plenary.getWebmStream()
                     video.webm_len = self._get_video_len(plenary.getWebmStream())
                     changed = True
                 except ValueError:
