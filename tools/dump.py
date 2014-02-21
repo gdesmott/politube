@@ -10,7 +10,7 @@ import urlparse
 import urllib2
 
 DIR = 'videos/wmv'
-REPO = 'http://desmottes.be/~lachambre/' + DIR
+REPO = 'http://wmv.politu.be/'
 
 MAX_PROCESS = 20
 
