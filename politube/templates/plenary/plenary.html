@@ -12,26 +12,33 @@
 <h1>{{ plenary.title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
 </div>
 
-<p><a href='{{ plenary.source }}'>source</a></p>
-
 <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
 
+<h2>Agenda</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
 
 {% if agenda.section %}
-  {% ifchanged %} <h2> {{ agenda.section }} </h2>  {% endifchanged %}
+  {% ifchanged %} <h3> {{ agenda.section }} </h3>  {% endifchanged %}
 {% endif %}
 
 {% if agenda.subsection %}
-{% ifchanged %} <h3> {{ agenda.subsection }} </h3>  {% endifchanged %}
+{% ifchanged %} <h4> {{ agenda.subsection }} </h4>  {% endifchanged %}
 {% endif %}
 
 <li><a onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
 
 {% endfor %}
 </ul>
+
+<h2>Infos</h2>
+<ul>
+  <li><a href="{{plenary.source}}">Voir sur lachambre.be</a></li>
+  <li><a href="{{plenary.get_wmv_stream}}">Télécharger la vidéo au format WMV</a></li>
+  <li><a href="{{plenary.get_mp4_stream}}">Télécharger la vidéo au format MP4</a></li>
+</ul>
+
 {% endblock %}
