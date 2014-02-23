@@ -9,7 +9,7 @@ You need pip and virtualenv (or buildout).
 
 Under debian based distributions:
 
-    sudo apt-get install python-pip python-virtualenv
+    sudo apt-get install python-pip python-virtualenv python-dev
 
 Once this is done create a virtualenv, for example:
 
