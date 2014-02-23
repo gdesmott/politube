@@ -9,7 +9,7 @@ You need pip and virtualenv (or buildout).
 
 Under debian based distributions:
 
-    sudo apt-get install python-pip python-virtualenv python-dev
+    sudo apt-get install python-pip python-virtualenv python-dev libxml2-dev
 
 Once this is done create a virtualenv, for example:
 
