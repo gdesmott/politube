@@ -33,7 +33,7 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-5">
-          <a href="{% url 'plenary' plenary.id %}#1">
+          <a href="{% url 'plenary' plenary.id %}">
             <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
             <source src='{{ plenary.getMp4Stream }}' type="video/mp4"/>
             <source src='{{ plenary.getWebmStream }}' type="video/webm"/>
@@ -42,7 +42,7 @@
           </a>
         </div>
         <div class="col-md-7">
-          <p><a href="{% url 'plenary' plenary.id %}#1"><b>{{plenary.title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
+          <p><a href="{% url 'plenary' plenary.id %}"><b>{{plenary.title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
           <ul>
           {% for agenda in plenary.agendaitem_set.all %}
             {% if agenda.subsection %}
@@ -50,7 +50,7 @@
             {% endif %}
           {% endfor %}
           </ul>
-          <p><b><a href="{% url 'plenary' plenary.id %}#1">Visionner cette séance</a></b></p>
+          <p><b><a href="{% url 'plenary' plenary.id %}">Visionner cette séance</a></b></p>
         </div>
       </div>
     </div>
