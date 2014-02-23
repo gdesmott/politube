@@ -16,3 +16,6 @@ def home(request):
         args['deputy'] = random.choice(deputies)
 
     return render(request, 'home.html', args)
+
+def about(request):
+    return render(request, 'about.html')
