@@ -36,7 +36,6 @@
           <a href="{% url 'plenary' plenary.id %}">
             <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
             <source src='{{ plenary.getMp4Stream }}' type="video/mp4"/>
-            <source src='{{ plenary.getWebmStream }}' type="video/webm"/>
             Your browser does not support the video tag.
             </video>
           </a>
