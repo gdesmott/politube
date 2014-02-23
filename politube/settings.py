@@ -3,6 +3,8 @@
 import os
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
 
+from django.conf import global_settings
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -131,6 +133,10 @@ INSTALLED_APPS = (
     'plenary',
     'deputy',
     'videos_tools',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
 )
 
 # A sample logging configuration. The only tangible logging
