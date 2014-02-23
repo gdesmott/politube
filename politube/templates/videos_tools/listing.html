@@ -21,32 +21,32 @@
 
     {% if v.wmv_len %}
       {% if v.wmv_is_ok %}
-        <td class="success"><a href="{{ v.plenary.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
+        <td class="success"><a href="{{ v.plenary.get_wmv_stream }}">{{ v.format_wmv_len }}</a></td>
       {% else %}
-        <td class="warning"><a href="{{ v.plenary.getWmvStream }}">{{ v.format_wmv_len }}</a></td>
+        <td class="warning"><a href="{{ v.plenary.get_wmv_stream }}">{{ v.format_wmv_len }}</a></td>
       {% endif %}
     {% else %}
-      <td class="danger"><a href="{{ v.plenary.getWmvStream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.get_wmv_stream }}">TODO</a></td>
     {% endif %}
 
     {% if v.mp4_len %}
       {% if v.mp4_is_ok %}
-        <td class="success"><a href="{{ v.plenary.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
+        <td class="success"><a href="{{ v.plenary.get_mp4_stream }}">{{ v.format_mp4_len }}</a></td>
       {% else %}
-        <td class="warning"><a href="{{ v.plenary.getMp4Stream }}">{{ v.format_mp4_len }}</a></td>
+        <td class="warning"><a href="{{ v.plenary.get_mp4_stream }}">{{ v.format_mp4_len }}</a></td>
       {% endif %}
     {% else %}
-      <td class="danger"><a href="{{ v.plenary.getMp4Stream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.get_mp4_stream }}">TODO</a></td>
     {% endif %}
 
     {% if v.webm_len %}
       {% if v.webm_is_ok %}
-        <td class="success"><a href="{{ v.plenary.getWebmStream }}">{{ v.format_webm_len }}</a></td>
+        <td class="success"><a href="{{ v.plenary.get_webm_stream }}">{{ v.format_webm_len }}</a></td>
       {% else %}
-        <td class="warning"><a href="{{ v.plenary.getWebmStream }}">{{ v.format_webm_len }}</a></td>
+        <td class="warning"><a href="{{ v.plenary.get_webm_stream }}">{{ v.format_webm_len }}</a></td>
       {% endif %}
     {% else %}
-      <td class="danger"><a href="{{ v.plenary.getWebmStream }}">TODO</a></td>
+      <td class="danger"><a href="{{ v.plenary.get_webm_stream }}">TODO</a></td>
     {% endif %}
 </tr>
 {% endfor %}

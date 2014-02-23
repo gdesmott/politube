@@ -34,7 +34,7 @@ class Command(BaseCommand):
                     print video.plenary.stream
             elif options['mp4']:
                 if (options['ignore_wmv'] or video.wmv_is_ok()) and not video.mp4_is_ok():
-                    print "%s %s" % (video.plenary.getWmvStream(), video.plenary.getMp4Stream())
+                    print "%s %s" % (video.plenary.get_wmv_stream(), video.plenary.get_mp4_stream())
             elif options['webm']:
                 if (options['ignore_wmv'] or video.wmv_is_ok()) and not video.webm_is_ok():
-                    print "%s %s" % (video.plenary.getWmvStream(), video.plenary.getWebmStream())
+                    print "%s %s" % (video.plenary.get_wmv_stream(), video.plenary.get_webm_stream())

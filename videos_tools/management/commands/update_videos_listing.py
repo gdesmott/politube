@@ -52,24 +52,24 @@ class Command(BaseCommand):
 
             if not video.wmv_is_ok() or options['force-wmv']:
                 try:
-                    print "update WMV", plenary.getWebmStream()
-                    video.wmv_len = self._get_video_len(plenary.getWmvStream())
+                    print "update WMV", plenary.get_webm_stream()
+                    video.wmv_len = self._get_video_len(plenary.get_wmv_stream())
                     changed = True
                 except ValueError:
                     pass
 
             if not video.mp4_is_ok() or options['force-mp4']:
                 try:
-                    print "update MP4", plenary.getMp4Stream()
-                    video.mp4_len = self._get_video_len(plenary.getMp4Stream())
+                    print "update MP4", plenary.get_mp4_stream()
+                    video.mp4_len = self._get_video_len(plenary.get_mp4_stream())
                     changed = True
                 except ValueError:
                     pass
 
             #if not video.webm_is_ok() or options['force-webm']:
             #    try:
-            #        print "update WEBM", plenary.getWebmStream()
-            #        video.webm_len = self._get_video_len(plenary.getWebmStream())
+            #        print "update WEBM", plenary.get_webm_stream()
+            #        video.webm_len = self._get_video_len(plenary.get_webm_stream())
             #        changed = True
             #    except ValueError:
             #        pass

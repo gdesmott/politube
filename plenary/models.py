@@ -17,13 +17,13 @@ class Plenary(models.Model):
     def __unicode__(self):
         return "%s - %s" % (self.chambre_id, self.title)
 
-    def getWmvStream(self):
+    def get_wmv_stream(self):
         return '%s/%s.%s' % (VIDEOS_WMV, self.video_id, 'wmv')
 
-    def getWebmStream(self):
+    def get_webm_stream(self):
         return '%s/%s.%s' % (VIDEOS_WEBM, self.video_id, 'webm')
 
-    def getMp4Stream(self):
+    def get_mp4_stream(self):
         return '%s/%s.%s' % (VIDEOS_MP4, self.video_id, 'mp4')
 
     class Meta:
