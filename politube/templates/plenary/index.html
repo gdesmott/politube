@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="page-header">
 <h1>Séances plénières</h1>
+</div>
+
 <ul>
 {% for p in plenaries %}
 {% ifchanged %} <h2> {{ p.date|date:"Y" }} </h2> {% endifchanged %}

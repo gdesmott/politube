@@ -8,7 +8,10 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ plenary.title }} - {{ plenary.date|date:"d m Y H:i" }}</h1>
+<div class="page-header">
+<h1>{{ plenary.title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
+</div>
+
 <p><a href='{{ plenary.source }}'>source</a></p>
 
 <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
