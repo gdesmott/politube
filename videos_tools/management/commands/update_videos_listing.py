@@ -52,7 +52,7 @@ class Command(BaseCommand):
 
             if not video.wmv_is_ok() or options['force-wmv']:
                 try:
-                    print "update WMV", plenary.get_webm_stream()
+                    print "update WMV", plenary.get_wmv_stream()
                     video.wmv_len = self._get_video_len(plenary.get_wmv_stream())
                     changed = True
                 except ValueError:
