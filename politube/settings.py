@@ -107,6 +107,11 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_pdb.middleware.PdbMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+)
+
+LOCALE_PATHS = (
+    PROJECT_PATH + '/../locale/',
 )
 
 ROOT_URLCONF = 'politube.urls'
@@ -137,6 +142,7 @@ INSTALLED_APPS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'django.core.context_processors.i18n',
 )
 
 # A sample logging configuration. The only tangible logging
