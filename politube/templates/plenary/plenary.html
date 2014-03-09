@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block head %}
 <script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js"></script>
@@ -17,7 +18,7 @@
 Your browser does not support the video tag.
 </video>
 
-<h2>Agenda</h2>
+<h2>{% trans "Agenda" %}</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
 
@@ -36,9 +37,9 @@ Your browser does not support the video tag.
 
 <h2>Infos</h2>
 <ul>
-  <li><a href="{{plenary.get_source}}">Voir sur lachambre.be</a></li>
-  <li><a href="{{plenary.get_wmv_stream}}">Télécharger la vidéo au format WMV</a></li>
-  <li><a href="{{plenary.get_mp4_stream}}">Télécharger la vidéo au format MP4</a></li>
+  <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
+  <li><a href="{{plenary.get_wmv_stream}}">{% trans "Télécharger la vidéo au format WMV" %}</a></li>
+  <li><a href="{{plenary.get_mp4_stream}}">{% trans "Télécharger la vidéo au format MP4" %}</a></li>
 </ul>
 
 {% endblock %}
