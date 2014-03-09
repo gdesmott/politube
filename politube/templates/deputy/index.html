@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="page-header">
-<h1>Députés</h1>
+<h1>{% trans "Députés" %}</h1>
 </div>
 
 {% regroup deputies by party as parties %}

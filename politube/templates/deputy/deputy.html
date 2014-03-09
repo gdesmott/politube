@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="page-header">
@@ -23,7 +24,7 @@
 
 </div>
 
-<h2 id='speaches'>Interventions en séance plénière</h2>
+<h2 id='speaches'>{% trans "Interventions en séance plénière" %}</h2>
 {% for agenda in deputy.getSortedItems %}
 
 {% ifchanged %} <h3>{{ agenda.plenary.date|date:"Y" }}</h3> {% endifchanged %}
