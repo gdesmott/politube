@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block head %}
 <script type="text/javascript" src="{{ STATIC_URL }}mediaelement/mediaelement-and-player.js"></script>
@@ -12,22 +13,22 @@
 <img src="{{ STATIC_URL }}/images/banner.jpg" class="img-responsive"/>
 
 <div class="page-header">
-  <p class="lead">Ce site a pour but de
-  rendre facilement consultables les <a href="{% url 'plenary-list' %}">vidéos des séances plénières</a> de la
-  <a href="http://www.lachambre.be">Chambre des représentants de Belgique</a>.
-  Il permet également de consulter <a href="{% url 'deputy-list' %}">la liste des députés</a>
-  siégeant à la Chambre et d'accéder rapidement à leurs différentes interventions en séances plénières.</p>
+  {% url 'plenary-list' as plenary_list_url %}
+  {% url 'deputy-list' as deputy_list_url %}
+
+  <p class="lead">{% blocktrans %}Ce site a pour but de rendre facilement consultables les <a href="{{ plenary_list_url }}">vidéos des séances plénières</a> de la
+  <a href="http://www.lachambre.be">Chambre des représentants de Belgique</a>. Il permet également de consulter <a href="{{ deputy_list_url }}">la liste des députés</a> siégeant à la Chambre et d'accéder rapidement à leurs différentes interventions en séances plénières.{% endblocktrans %}</p>
 
   <div class="alert alert-info">
-    Certaines vidéos ne sont malheureusement pas encore disponibles, veuillez nous en excuser. Elles devraient être
-    ajoutées sous peu. En attendant, vous pouvez consulter <a href="{% url 'videos-list' %}">le listing des vidéos</a> pour vérifier
-    la disponibilité des différentes vidéos.
+    {% url 'videos-list' as videos_list_url %}
+
+    {% blocktrans %} Certaines vidéos ne sont malheureusement pas encore disponibles, veuillez nous en excuser. Elles devraient être ajoutées sous peu. En attendant, vous pouvez consulter <a href="{{ videos_list_url }}">le listing des vidéos</a> pour vérifier la disponibilité des différentes vidéos.{% endblocktrans %}
   </div>
 
   {% if plenary %}
   <div id="latest-plenary" class="panel panel-default">
     <div class="panel-heading">
-      <h3>Dernière séance plénière</h3>
+      <h3>{% trans "Dernière séance plénière" %}</h3>
     </div>
 
     <div class="panel-body">
@@ -49,7 +50,7 @@
             {% endif %}
           {% endfor %}
           </ul>
-          <p><b><a href="{% url 'plenary' plenary.id %}">Visionner cette séance</a></b></p>
+          <p><b><a href="{% url 'plenary' plenary.id %}">{% trans "Visionner cette séance" %}</a></b></p>
         </div>
       </div>
     </div>
@@ -59,7 +60,7 @@
   {% if deputy %}
   <div id="random-deputy" class="panel panel-default">
     <div class="panel-heading">
-      <h3>{% if deputy.sex == 'F' %} Une parlementaire {% else %} Un parlementaire {% endif %}</h3>
+      <h3>{% if deputy.sex == 'F' %} {% trans "Une parlementaire" %} {% else %} {% trans "Un parlementaire" %} {% endif %}</h3>
     </div>
 
     <div class="panel-body">
@@ -77,7 +78,7 @@
           {% endif %}
           </address>
           <p><i>{{ deputy.get_cv }}</i></p>
-          <p><b><a href="{% url 'deputy' deputy.dieren_id %}#speaches">Consulter ses interventions en plénière</a></b></p>
+          <p><b><a href="{% url 'deputy' deputy.dieren_id %}#speaches">{% trans "Consulter ses interventions en plénière" %}</a></b></p>
         </div>
       </div>
     </div>
