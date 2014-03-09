@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block head %}
 <link rel="stylesheet" href="{{ STATIC_URL }}mediaelement/mediaelementplayer.css" />
@@ -6,24 +7,17 @@
 
 {% block content %}
 <div class="page-header">
-  <h1>À propos</h1>
+  <h1>{% trans "À propos" %}</h1>
 </div>
 
-<p><a href="{% url 'home' %}">Politu.be</a> est un projet citoyen libre,
-gratuit et <a href="https://github.com/gdesmott/politube">ouvert</a> se voulant neutre politiquement.
-Il a pour but de rendre les débats
-parlementaires le plus transparent possible afin de donner aux
-électeurs une vision claire du travail de leurs élus.</p>
+{% url 'home' as home_url %}
+<p>{% blocktrans %}<a href="{{ home_url }}">Politu.be</a> est un projet citoyen libre,
+gratuit et <a href="https://github.com/gdesmott/politube">ouvert</a> se voulant neutre politiquement. Il a pour but de rendre les débats parlementaires le plus transparent possible afin de donner aux électeurs une vision claire du travail de leurs élus.{% endblocktrans %}</p>
 
-<p>Nous vous invitons à
-consulter également le site <a href="http://www.noselus.be/">Noselus.be</a>
-proposant des services similaires pour le parlement fédéral et wallon.
-</p>
+<p>{% blocktrans %}Nous vous invitons à consulter également le site <a href="http://www.noselus.be/">Noselus.be</a> proposant des services similaires pour le parlement fédéral et wallon.{% endblocktrans %}</p>
 
-<p>N'hésitez pas à <a href="https://github.com/gdesmott/politube/issues/new">rapporter</a>
-tout problème ou idée d'amélioration, toutes les critiques et suggestions sont les bienvenues.</p>
+<p>{% blocktrans %}N'hésitez pas à <a href="https://github.com/gdesmott/politube/issues/new">rapporter</a> tout problème ou idée d'amélioration, toutes les critiques et suggestions sont les bienvenues.{% endblocktrans %}</p>
 
-<p><a href="{% url 'home' %}">Politu.be</a> utilise le projet
-<a href="http://dierentheater.be/">Dieren Theater</a> pour une grande partie de ses données.</p>
+<p>{% blocktrans %}<a href="{{ home_url }}">Politu.be</a> utilise le projet <a href="http://dierentheater.be/">Dieren Theater</a> pour une grande partie de ses données.{% endblocktrans %}</p>
 
 {% endblock %}
