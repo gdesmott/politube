@@ -31,7 +31,7 @@ class Plenary (object):
 
         self.source_fr = PAGE_URL % ('fr', self.id)
         page = urllib2.urlopen (self.source_fr)
-        self.soup = BeautifulSoup(page)
+        self.soup_fr = BeautifulSoup(page)
 
         self.source_nl = PAGE_URL % ('nl', self.id)
 
@@ -42,17 +42,17 @@ class Plenary (object):
         self.agenda = self._extractAgenda()
 
     def _extractDate(self):
-        font = self.soup.find('font', class_='txt')
+        font = self.soup_fr.find('font', class_='txt')
 
         return datetime.datetime.strptime(font.text.strip(), '%d/%m/%Y - %H:%M')
 
     def _extractTitle(self):
-        h4 = self.soup.find_all('h4')
+        h4 = self.soup_fr.find_all('h4')
         # CRAP: use the 8th <h4>
         return h4[7].text.encode('utf-8')
 
     def _extractStream(self):
-        e = self.soup.find(href=re.compile("mms://"))
+        e = self.soup_fr.find(href=re.compile("mms://"))
         if e is None:
             warnings.warn('No mms://')
             return
@@ -65,7 +65,7 @@ class Plenary (object):
         section = None
         subsection = None
 
-        a = self.soup.find(text='AGENDA')
+        a = self.soup_fr.find(text='AGENDA')
         if a is None:
             return agenda
 
