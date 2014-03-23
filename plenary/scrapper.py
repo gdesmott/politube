@@ -34,6 +34,8 @@ class Plenary (object):
         self.soup_fr = BeautifulSoup(page)
 
         self.source_nl = PAGE_URL % ('nl', self.id)
+        page = urllib2.urlopen (self.source_nl)
+        self.soup_nl = BeautifulSoup(page)
 
         self.date = self._extractDate()
         self.title = self._extractTitle()
@@ -42,9 +44,11 @@ class Plenary (object):
         self.agenda = self._extractAgenda()
 
     def _extractDate(self):
-        font = self.soup_fr.find('font', class_='txt')
+        font_fr = self.soup_fr.find('font', class_='txt')
+        font_nl = self.soup_nl.find('font', class_='txt')
+        assert (font_fr.text.strip() == font_nl.text.strip())
 
-        return datetime.datetime.strptime(font.text.strip(), '%d/%m/%Y - %H:%M')
+        return datetime.datetime.strptime(font_fr.text.strip(), '%d/%m/%Y - %H:%M')
 
     def _extractTitle(self):
         h4 = self.soup_fr.find_all('h4')
