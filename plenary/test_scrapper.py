@@ -24,6 +24,7 @@ def test_scrapper_20130717():
     assert p.video_id == '20130717-1_bb_pl'
 
     assert len(p.agenda_fr) == 160
+    assert len(p.agenda_nl) == 160
 
     def check_agenda(agenda, time, name, section=None, subsection=None):
         assert agenda.time == time
@@ -35,6 +36,11 @@ def test_scrapper_20130717():
     check_agenda(p.agenda_fr[2], 237, 'Benoît DRÈZE', None, 'prestation de serment')
     check_agenda(p.agenda_fr[-1], 25033, 'Voorzitter - Président', 'votes: projets/propositions',
             '2945 - Convention travail maritime')
+
+    check_agenda(p.agenda_nl[0], 87, 'Voorzitter - Président')
+    check_agenda(p.agenda_nl[2], 237, 'Benoît DRÈZE', None, 'eedaflegging')
+    check_agenda(p.agenda_nl[-1], 25033, 'Voorzitter - Président', 'stemmingen: ontwerpen/voorstellen',
+            '2945 - Verdrag maritieme arbeid')
 
 def test_scrapper_20130307():
     p = scrapper.Plenary('20130307-1')
@@ -53,6 +59,7 @@ def test_scrapper_20130307():
     assert p.video_id == '20130307-1_bb_pl'
 
     assert len(p.agenda_fr) == 0
+    assert len(p.agenda_nl) == 0
 
 def test_scrapper_20121122():
     p = scrapper.Plenary('20121122-2')

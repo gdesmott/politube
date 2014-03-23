@@ -41,7 +41,9 @@ class Plenary (object):
         self.title_fr, self.title_nl = self._extractTitle(self.soup_fr), self._extractTitle(self.soup_nl)
         self.stream = self._extractStream()
         self.video_id = self._extract_video_id()
-        self.agenda_fr = self._extractAgenda(self.soup_fr)
+        self.agenda_fr, self.agenda_nl = self._extractAgenda(self.soup_fr), self._extractAgenda(self.soup_nl)
+
+        assert len(self.agenda_fr) == len(self.agenda_nl)
 
     def _extractDate(self):
         font_fr = self.soup_fr.find('font', class_='txt')
