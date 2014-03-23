@@ -39,12 +39,12 @@ class Command(BaseCommand):
                 sp = plenary.scrapper.Plenary(i)
 
                 p = Plenary.objects.create(chambre_id=sp.id,
-                        source=sp.source_fr, date=sp.date, title=sp.title_fr, video_id=sp.video_id,
+                        source_fr=sp.source_fr, date=sp.date, title_fr=sp.title_fr, video_id=sp.video_id,
                         stream=sp.stream)
 
                 for a in sp.agenda_fr:
                     AgendaItem.objects.create(plenary=p,
-                        time=a.time, speaker=a.name, section=a.section, subsection=a.subsection)
+                        time=a.time, speaker=a.name, section_fr=a.section, subsection_fr=a.subsection)
 
     def _strip_speaker_name(self, speaker):
         l = speaker.lower().strip()

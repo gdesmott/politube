@@ -8,14 +8,14 @@ VIDEOS_WEBM = 'http://politu.be/~lachambre/videos/webm'
 
 class Plenary(models.Model):
     chambre_id = models.CharField(max_length=200)
-    source = models.URLField()
+    source_fr = models.URLField()
     date = models.DateTimeField('date')
-    title = models.CharField(max_length=200)
+    title_fr = models.CharField(max_length=200)
     video_id = models.CharField(max_length=200)
     stream = models.URLField()
 
     def __unicode__(self):
-        return "%s - %s" % (self.chambre_id, self.title)
+        return "%s - %s" % (self.chambre_id, self.title_fr)
 
     def get_wmv_stream(self):
         return '%s/%s.%s' % (VIDEOS_WMV, self.video_id, 'wmv')
@@ -27,10 +27,10 @@ class Plenary(models.Model):
         return '%s/%s.%s' % (VIDEOS_MP4, self.video_id, 'mp4')
 
     def get_title(self):
-        return self.title
+        return self.title_fr
 
     def get_source(self):
-        return self.source
+        return self.source_fr
 
     class Meta:
         ordering = ["-date"]
@@ -80,21 +80,21 @@ class AgendaItem(models.Model):
     # time in seconds
     time = models.IntegerField()
     speaker = models.CharField(max_length=200)
-    section = models.CharField(max_length=200, null=True)
-    subsection = models.CharField(max_length=200, null=True)
+    section_fr = models.CharField(max_length=200, null=True)
+    subsection_fr = models.CharField(max_length=200, null=True)
     speaker_id = models.ForeignKey(Deputy, null=True)
 
     def __unicode__(self):
-        return "%s - %s (%s)" % (self.speaker, self.plenary.title, self.time)
+        return "%s - %s (%s)" % (self.speaker, self.plenary.title_fr, self.time)
 
     def displayTime(self):
         return str(datetime.timedelta(seconds=self.time))
 
     def get_section(self):
-        return self.section
+        return self.section_fr
 
     def get_subsection(self):
-        return self.subsection
+        return self.subsection_fr
 
     class Meta:
         ordering = ["time"]
