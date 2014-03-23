@@ -76,7 +76,7 @@
           <a href='{{deputy.website}}'>{{deputy.website}}</a><br>
           {% endif %}
           </address>
-          <p><i>{{ deputy.cv_fr }}</i></p>
+          <p><i>{{ deputy.get_cv }}</i></p>
           <p><b><a href="{% url 'deputy' deputy.dieren_id %}#speaches">Consulter ses interventions en plénière</a></b></p>
         </div>
       </div>

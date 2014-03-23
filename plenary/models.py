@@ -69,6 +69,9 @@ class Deputy(models.Model):
     class Meta:
         ordering = ["party", "full_name"]
 
+    def get_cv(self):
+        return self.cv_fr
+
     def getSortedItems(self):
         return self.agendaitem_set.all().order_by('plenary', 'time')
 
