@@ -29,8 +29,8 @@ class Plenary (object):
     def __init__(self, i):
         self.id = i
 
-        self.source = PAGE_URL % self.id
-        page = urllib2.urlopen (self.source)
+        self.source_fr = PAGE_URL % self.id
+        page = urllib2.urlopen (self.source_fr)
         self.soup = BeautifulSoup(page)
 
         self.date = self._extractDate()
