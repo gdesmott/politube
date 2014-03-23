@@ -87,5 +87,11 @@ class AgendaItem(models.Model):
     def displayTime(self):
         return str(datetime.timedelta(seconds=self.time))
 
+    def get_section(self):
+        return self.section
+
+    def get_subsection(self):
+        return self.subsection
+
     class Meta:
         ordering = ["time"]

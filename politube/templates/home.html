@@ -44,8 +44,8 @@
           <p><a href="{% url 'plenary' plenary.id %}"><b>{{plenary.get_title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
           <ul>
           {% for agenda in plenary.agendaitem_set.all %}
-            {% if agenda.subsection %}
-              {% ifchanged %} <li>{{ agenda.subsection }}</li> {% endifchanged %}
+            {% if agenda.get_subsection %}
+              {% ifchanged %} <li>{{ agenda.get_subsection }}</li> {% endifchanged %}
             {% endif %}
           {% endfor %}
           </ul>
