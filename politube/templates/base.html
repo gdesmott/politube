@@ -48,6 +48,11 @@
             <ul class="nav navbar-nav navbar-right">
               {% comment %}Translators: navigation bar{% endcomment %}
               <li class="{% navactive 'about' %}"><a href="{% url 'about' %}">{% trans "À propos" %}</a></li>
+              {% if LANGUAGE_CODE == "nl" %}
+              <li><a href="{{ request.path }}?lang=fr">fr</a></li>
+              {% else %}
+              <li><a href="{{ request.path }}?lang=nl">nl</a></li>
+              {% endif %}
             </ul>
           </div>
         </div>

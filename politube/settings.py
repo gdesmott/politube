@@ -108,10 +108,16 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_pdb.middleware.PdbMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'politube.middleware.SessionBasedLocaleMiddleware',
 )
 
 LOCALE_PATHS = (
     PROJECT_PATH + '/../locale/',
+)
+
+LANGUAGES = (
+    ('fr', 'French'),
+    ('nl', 'Dutch'),
 )
 
 ROOT_URLCONF = 'politube.urls'
