@@ -41,7 +41,7 @@ class Plenary (object):
         self.title_fr, self.title_nl = self._extractTitle(self.soup_fr), self._extractTitle(self.soup_nl)
         self.stream = self._extractStream()
         self.video_id = self._extract_video_id()
-        self.agenda = self._extractAgenda()
+        self.agenda_fr = self._extractAgenda(self.soup_fr)
 
     def _extractDate(self):
         font_fr = self.soup_fr.find('font', class_='txt')
@@ -63,13 +63,13 @@ class Plenary (object):
 
         return e['href']
 
-    def _extractAgenda(self):
+    def _extractAgenda(self, soup):
         agenda = []
 
         section = None
         subsection = None
 
-        a = self.soup_fr.find(text='AGENDA')
+        a = soup.find(text='AGENDA')
         if a is None:
             return agenda
 

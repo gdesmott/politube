@@ -42,7 +42,7 @@ class Command(BaseCommand):
                         source=sp.source_fr, date=sp.date, title=sp.title_fr, video_id=sp.video_id,
                         stream=sp.stream)
 
-                for a in sp.agenda:
+                for a in sp.agenda_fr:
                     AgendaItem.objects.create(plenary=p,
                         time=a.time, speaker=a.name, section=a.section, subsection=a.subsection)
 
