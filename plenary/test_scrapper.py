@@ -10,6 +10,7 @@ def test_scrapper_20130717():
     assert p.id == '20130717-1'
     assert p.title == 'P157 - Questions, projets et propositions de loi, votes'
     assert p.source_fr == 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&leftmenu=none&language=fr&cfm=/site/wwwcfm/streaming/archive/viewarchivemeeting.cfm?meeting=20130717-1'
+    assert p.source_nl == 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&leftmenu=none&language=nl&cfm=/site/wwwcfm/streaming/archive/viewarchivemeeting.cfm?meeting=20130717-1'
 
     assert p.date.day == 17
     assert p.date.month == 07

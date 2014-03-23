@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 
 INDEX = 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&rightmenu=right&language=fr&cfm=/site/wwwcfm/streaming/archive/video.cfm'
 
-PAGE_URL = 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&leftmenu=none&language=fr&cfm=/site/wwwcfm/streaming/archive/viewarchivemeeting.cfm?meeting=%s'
+PAGE_URL = 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&leftmenu=none&language=%s&cfm=/site/wwwcfm/streaming/archive/viewarchivemeeting.cfm?meeting=%s'
 
 class AgendaItem(object):
     def __init__(self, time, name, section, subsection):
@@ -29,9 +29,11 @@ class Plenary (object):
     def __init__(self, i):
         self.id = i
 
-        self.source_fr = PAGE_URL % self.id
+        self.source_fr = PAGE_URL % ('fr', self.id)
         page = urllib2.urlopen (self.source_fr)
         self.soup = BeautifulSoup(page)
+
+        self.source_nl = PAGE_URL % ('nl', self.id)
 
         self.date = self._extractDate()
         self.title = self._extractTitle()
