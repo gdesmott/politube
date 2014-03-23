@@ -41,7 +41,7 @@
           </a>
         </div>
         <div class="col-md-7">
-          <p><a href="{% url 'plenary' plenary.id %}"><b>{{plenary.title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
+          <p><a href="{% url 'plenary' plenary.id %}"><b>{{plenary.get_title}}</b> - {{ plenary.date|date:"d m Y H:i" }}</a></p>
           <ul>
           {% for agenda in plenary.agendaitem_set.all %}
             {% if agenda.subsection %}

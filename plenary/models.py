@@ -26,6 +26,12 @@ class Plenary(models.Model):
     def get_mp4_stream(self):
         return '%s/%s.%s' % (VIDEOS_MP4, self.video_id, 'mp4')
 
+    def get_title(self):
+        return self.title
+
+    def get_source(self):
+        return self.source
+
     class Meta:
         ordering = ["-date"]
         get_latest_by = "date"

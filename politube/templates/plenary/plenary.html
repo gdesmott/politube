@@ -9,7 +9,7 @@
 
 {% block content %}
 <div class="page-header">
-<h1>{{ plenary.title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
+<h1>{{ plenary.get_title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
 </div>
 
 <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
@@ -36,7 +36,7 @@ Your browser does not support the video tag.
 
 <h2>Infos</h2>
 <ul>
-  <li><a href="{{plenary.source}}">Voir sur lachambre.be</a></li>
+  <li><a href="{{plenary.get_source}}">Voir sur lachambre.be</a></li>
   <li><a href="{{plenary.get_wmv_stream}}">Télécharger la vidéo au format WMV</a></li>
   <li><a href="{{plenary.get_mp4_stream}}">Télécharger la vidéo au format MP4</a></li>
 </ul>

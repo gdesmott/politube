@@ -27,7 +27,7 @@
 {% for agenda in deputy.getSortedItems %}
 
 {% ifchanged %} <h3>{{ agenda.plenary.date|date:"Y" }}</h3> {% endifchanged %}
-{% ifchanged %} <h4><a href="{% url 'plenary' agenda.plenary.id %}">{{ agenda.plenary.title }} -
+{% ifchanged %} <h4><a href="{% url 'plenary' agenda.plenary.id %}">{{ agenda.plenary.get_title }} -
     {{ agenda.plenary.date|date:"d M Y" }}</a></h4> {% endifchanged %}
 
 <ul>
