@@ -1,10 +1,15 @@
 import datetime
 
+from django.utils.translation import get_language
 from django.db import models
 
 VIDEOS_WMV = 'http://wmv.politu.be'
 VIDEOS_MP4 = 'http://mp4.politu.be'
 VIDEOS_WEBM = 'http://politu.be/~lachambre/videos/webm'
+
+def use_nl():
+    l = get_language()
+    return l == 'nl' or l.startswith('nl-')
 
 class Plenary(models.Model):
     chambre_id = models.CharField(max_length=200)
@@ -29,10 +34,16 @@ class Plenary(models.Model):
         return '%s/%s.%s' % (VIDEOS_MP4, self.video_id, 'mp4')
 
     def get_title(self):
-        return self.title_fr
+        if use_nl():
+            return self.title_nl
+        else:
+            return self.title_fr
 
     def get_source(self):
-        return self.source_fr
+        if use_nl():
+            return self.source_nl
+        else:
+            return self.source_fr
 
     class Meta:
         ordering = ["-date"]
@@ -72,7 +83,10 @@ class Deputy(models.Model):
         ordering = ["party", "full_name"]
 
     def get_cv(self):
-        return self.cv_fr
+        if use_nl():
+            return self.cv_nl
+        else:
+            return self.cv_fr
 
     def getSortedItems(self):
         return self.agendaitem_set.all().order_by('plenary', 'time')
@@ -95,10 +109,16 @@ class AgendaItem(models.Model):
         return str(datetime.timedelta(seconds=self.time))
 
     def get_section(self):
-        return self.section_fr
+        if use_nl():
+            return self.section_nl
+        else:
+            return self.section_fr
 
     def get_subsection(self):
-        return self.subsection_fr
+        if use_nl():
+            return self.subsection_nl
+        else:
+            return self.subsection_fr
 
     class Meta:
         ordering = ["time"]
