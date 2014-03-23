@@ -38,7 +38,7 @@ class Plenary (object):
         self.soup_nl = BeautifulSoup(page)
 
         self.date = self._extractDate()
-        self.title_fr = self._extractTitle()
+        self.title_fr, self.title_nl = self._extractTitle(self.soup_fr), self._extractTitle(self.soup_nl)
         self.stream = self._extractStream()
         self.video_id = self._extract_video_id()
         self.agenda = self._extractAgenda()
@@ -50,8 +50,8 @@ class Plenary (object):
 
         return datetime.datetime.strptime(font_fr.text.strip(), '%d/%m/%Y - %H:%M')
 
-    def _extractTitle(self):
-        h4 = self.soup_fr.find_all('h4')
+    def _extractTitle(self, soup):
+        h4 = soup.find_all('h4')
         # CRAP: use the 8th <h4>
         return h4[7].text.encode('utf-8')
 

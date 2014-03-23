@@ -9,6 +9,8 @@ def test_scrapper_20130717():
 
     assert p.id == '20130717-1'
     assert p.title_fr == 'P157 - Questions, projets et propositions de loi, votes'
+    assert p.title_nl == 'P157 - Vragen, wetsontwerpen en voorstellen, stemmingen'
+
     assert p.source_fr == 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&leftmenu=none&language=fr&cfm=/site/wwwcfm/streaming/archive/viewarchivemeeting.cfm?meeting=20130717-1'
     assert p.source_nl == 'http://www.dekamer.be/kvvcr/showpage.cfm?section=none&leftmenu=none&language=nl&cfm=/site/wwwcfm/streaming/archive/viewarchivemeeting.cfm?meeting=20130717-1'
 
@@ -39,6 +41,7 @@ def test_scrapper_20130307():
 
     assert p.id == '20130307-1'
     assert p.title_fr == 'P 134 - questions, projets de loi et propositions, votes'
+    assert p.title_nl == 'P 134 - vragen, wetsontwerpen en voorstellen, stemmingen'
 
     assert p.date.day == 7
     assert p.date.month == 3
@@ -56,6 +59,7 @@ def test_scrapper_20121122():
 
     assert p.id == '20121122-2'
     assert p.title_fr == 'P114 - Discussion de la déclaration du gouvernement'
+    assert p.title_nl == 'P114 - Bespreking van de verklaring van de regering'
 
     assert p.date.day == 22
     assert p.date.month == 11
