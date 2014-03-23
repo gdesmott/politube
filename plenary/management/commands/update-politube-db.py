@@ -39,7 +39,7 @@ class Command(BaseCommand):
                 sp = plenary.scrapper.Plenary(i)
 
                 p = Plenary.objects.create(chambre_id=sp.id,
-                        source=sp.source_fr, date=sp.date, title=sp.title, video_id=sp.video_id,
+                        source=sp.source_fr, date=sp.date, title=sp.title_fr, video_id=sp.video_id,
                         stream=sp.stream)
 
                 for a in sp.agenda:

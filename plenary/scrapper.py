@@ -38,7 +38,7 @@ class Plenary (object):
         self.soup_nl = BeautifulSoup(page)
 
         self.date = self._extractDate()
-        self.title = self._extractTitle()
+        self.title_fr = self._extractTitle()
         self.stream = self._extractStream()
         self.video_id = self._extract_video_id()
         self.agenda = self._extractAgenda()
@@ -123,4 +123,4 @@ def generate_plenary():
 
 if __name__ == '__main__':
     for p in generate_plenary():
-        print p.id, p.title
+        print p.id, p.title_fr
