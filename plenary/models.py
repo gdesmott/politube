@@ -9,8 +9,10 @@ VIDEOS_WEBM = 'http://politu.be/~lachambre/videos/webm'
 class Plenary(models.Model):
     chambre_id = models.CharField(max_length=200)
     source_fr = models.URLField()
+    source_nl = models.URLField()
     date = models.DateTimeField('date')
     title_fr = models.CharField(max_length=200)
+    title_nl = models.CharField(max_length=200)
     video_id = models.CharField(max_length=200)
     stream = models.URLField()
 
@@ -81,7 +83,9 @@ class AgendaItem(models.Model):
     time = models.IntegerField()
     speaker = models.CharField(max_length=200)
     section_fr = models.CharField(max_length=200, null=True)
+    section_nl = models.CharField(max_length=200, null=True)
     subsection_fr = models.CharField(max_length=200, null=True)
+    subsection_nl = models.CharField(max_length=200, null=True)
     speaker_id = models.ForeignKey(Deputy, null=True)
 
     def __unicode__(self):
