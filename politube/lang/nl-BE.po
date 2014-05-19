@@ -1,0 +1,153 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-23 16:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Wannes De Smet <wannes321@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Translators: navigation bar
+#: politube/templates/about.html:10 politube/templates/base.html:50
+msgid "À propos"
+msgstr "Over deze website"
+
+#: politube/templates/about.html:14
+#, python-format
+msgid ""
+"<a href=\"%(home_url)s\">Politu.be</a> est un projet citoyen libre,\n"
+"gratuit et <a href=\"https://github.com/gdesmott/politube\">ouvert</a> se "
+"voulant neutre politiquement. Il a pour but de rendre les débats "
+"parlementaires le plus transparent possible afin de donner aux électeurs une "
+"vision claire du travail de leurs élus."
+msgstr ""
+"<a href=\"%(home_url)s\">Politu.be</a> is een vrij, neutraal en "
+"<a href=\"https://github.com/gdesmott/politube\">open</a> burgerinitiatief.\n"
+"Het heeft als doel de parlementaire debatten transparent te maken door "
+"de kiezers een duidelijk zicht te bieden op het werk van hun verkozenen."
+
+#: politube/templates/about.html:17
+msgid ""
+"Nous vous invitons à consulter également le site <a href=\"http://www."
+"noselus.be/\">Noselus.be</a> proposant des services similaires pour le "
+"parlement fédéral et wallon."
+msgstr "We nodigen u uit om <a href=\"http://www.nosules.be/\">Nosules.be</a>"
+"te bezoeken, dat gelijkaardige diensten\n"
+"aanbiedt over het Federaal en Waals parlement."
+
+#: politube/templates/about.html:19
+msgid ""
+"N'hésitez pas à <a href=\"https://github.com/gdesmott/politube/issues/new"
+"\">rapporter</a> tout problème ou idée d'amélioration, toutes les critiques "
+"et suggestions sont les bienvenues."
+msgstr ""
+"Aarzel niet om problemen of ideeen te <a href=\"https://github.com/gdesmott/politube/issues/new"
+"\">melden</a>, wij verwelkomen kritiek en suggesties."
+
+#: politube/templates/about.html:21
+#, python-format
+msgid ""
+"<a href=\"%(home_url)s\">Politu.be</a> utilise le projet <a href=\"http://"
+"dierentheater.be/\">Dieren Theater</a> pour une grande partie de ses données."
+msgstr ""
+""<a href=\"%(home_url)s\">Politu.be</a> gebruikt het <a href=\"http://"
+"dierentheater.be/\">Dieren Theather</a> project als bron voor een groot gedeelte"
+"van zijn gegevens."
+
+#. Translators: navigation bar
+#: politube/templates/base.html:44
+msgid "Plénières"
+msgstr "Plenaire Zittingen"
+
+#. Translators: navigation bar
+#: politube/templates/base.html:46 politube/templates/deputy/index.html:6
+msgid "Députés"
+msgstr "Afgevaardigden"
+
+#. Translators: twitter button
+#: politube/templates/base.html:71
+msgid "Suivre @politu_be"
+msgstr "Volg @politu_be"
+
+#: politube/templates/home.html:34
+#, python-format
+msgid ""
+"Ce site a pour but de rendre facilement consultables les <a href="
+"\"%(plenary_list_url)s\">vidéos des séances plénières</a> de la\n"
+"  <a href=\"http://www.lachambre.be\">Chambre des représentants de Belgique</"
+"a>. Il permet également de consulter <a href=\"%(deputy_list_url)s\">la "
+"liste des députés</a> siégeant à la Chambre et d'accéder rapidement à leurs "
+"différentes interventions en séances plénières."
+msgstr ""
+"Deze site wil de <a href="
+"\"%(plenary_list_url)s\">videos van de plenaire zittingen</a> van de "
+"<a href=\"http://www.dekamer.be\">Kamer van Volksvertegenwoordigers van Belgie</a>"
+" gemakkelijk consulteer maken.U kan de <a href=\"%(deputy_list_url)s\">"
+"lijst van vertegenwoordigers</a> zittend in de Kamer gebruiken om snel "
+"hun verschillende interventies gedurende de plenaire zittingen raad te plegen"
+
+#: politube/templates/home.html:40
+#, python-format
+msgid ""
+" Certaines vidéos ne sont malheureusement pas encore disponibles, veuillez "
+"nous en excuser. Elles devraient être ajoutées sous peu. En attendant, vous "
+"pouvez consulter <a href=\"%(videos_list_url)s\">le listing des vidéos</a> "
+"pour vérifier la disponibilité des différentes vidéos."
+msgstr ""
+"Enkele videos zijn jammer genoeg nog niet beschikbaar, waarvoor onze "
+"excuses. Terwijl wij bezig zijn deze videos op de site te plaatsen,"
+"kan u de <a href=\"%(videos_list_url)s\">lijst van beschikbare videos</a> raadplegen"
+
+#: politube/templates/home.html:46
+msgid "Dernière séance plénière"
+msgstr "Laatste plenaire zitting"
+
+#: politube/templates/home.html:68
+msgid "Visionner cette séance"
+msgstr "Zitting weergeven"
+
+#: politube/templates/home.html:78
+msgid "Une parlementaire"
+msgstr "Een parlementslid"
+
+#: politube/templates/home.html:78
+msgid "Un parlementaire"
+msgstr "Een parlementslid"
+
+#: politube/templates/home.html:96
+msgid "Consulter ses interventions en plénière"
+msgstr "Bekijk interventies in deze zitting"
+
+#: politube/templates/deputy/deputy.html:27
+msgid "Interventions en séance plénière"
+msgstr "Interventies in de plenaire zitting"
+
+#: politube/templates/plenary/index.html:6
+msgid "Séances plénières"
+msgstr "Plenaire zittingen"
+
+#: politube/templates/plenary/plenary.html:21
+msgid "Agenda"
+msgstr "Agenda"
+
+#: politube/templates/plenary/plenary.html:40
+msgid "Voir sur lachambre.be"
+msgstr "Bekijk op dekamer.be"
+
+#: politube/templates/plenary/plenary.html:41
+msgid "Télécharger la vidéo au format WMV"
+msgstr "Download de video in WMV formaat"
+
+#: politube/templates/plenary/plenary.html:42
+msgid "Télécharger la vidéo au format MP4"
+msgstr "Download deze video in MP4 formaat"
