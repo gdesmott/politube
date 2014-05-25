@@ -60,7 +60,7 @@ msgid ""
 "<a href=\"%(home_url)s\">Politu.be</a> utilise le projet <a href=\"http://"
 "dierentheater.be/\">Dieren Theater</a> pour une grande partie de ses données."
 msgstr ""
-""<a href=\"%(home_url)s\">Politu.be</a> gebruikt het <a href=\"http://"
+"<a href=\"%(home_url)s\">Politu.be</a> gebruikt het <a href=\"http://"
 "dierentheater.be/\">Dieren Theather</a> project als bron voor een groot gedeelte"
 "van zijn gegevens."
 
