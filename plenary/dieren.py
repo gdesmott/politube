@@ -38,7 +38,8 @@ def deputy_json_to_model(j):
     v['current'] = j['current']
     v['cv_fr'] = j['cv']['fr']
     v['cv_nl'] = j['cv']['nl']
-    v['email'] = j['emails'][0]
+    if j['emails'] is not None and len(j['emails']) > 0:
+        v['email'] = j['emails'][0]
     v['first_name'] = j['first_name']
     v['full_name'] = j['full_name']
     v['language'] = j['language']
