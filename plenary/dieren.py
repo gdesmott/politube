@@ -42,7 +42,8 @@ def deputy_json_to_model(j):
         v['email'] = j['emails'][0]
     v['first_name'] = j['first_name']
     v['full_name'] = j['full_name']
-    v['language'] = j['language']
+    if j['language']:
+        v['language'] = j['language']
     v['last_name'] = j['last_name']
     v['sex'] = j['sex']
     v['website'] = j['websites'][0] if len(j['websites']) > 0 else None
