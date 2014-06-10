@@ -70,7 +70,7 @@ $('#vid').on('timeupdate', function() {
     // Find last link with a time lower than current time
     for (var i = 0; i < times.length; i++) {
         if(ctime <= times[i]) {
-            console.log('found ' + times[i-1] + ' from ', ctime);
+            //console.log('found ' + times[i-1] + ' from ', ctime);
             // if different from current highlighted link, highlight it
             if(times[i-1] != currentHighlight){
                 currentHighlight = times[i-1];
