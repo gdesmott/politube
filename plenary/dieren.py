@@ -48,7 +48,7 @@ def deputy_json_to_model(j):
     v['website'] = j['websites'][0] if len(j['websites']) > 0 else None
     v['photo_uri'] = j['photo_uri']
 
-    if len(j['party']):
+    if j['party'] is not None and len(j['party']):
         party_id = j['party'].split('/')[-2]
         v['party'] = Party.objects.get(pk=party_id)
     else:
