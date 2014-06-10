@@ -13,11 +13,21 @@
 <h1>{{ plenary.get_title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
 </div>
 
+<div style="margin:5px;float:left">
 <video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
+<h2>Infos</h2>
+<ul>
+  <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
+  <li><a href="{{plenary.get_wmv_stream}}">{% trans "Télécharger la vidéo au format WMV" %}</a></li>
+  <li><a href="{{plenary.get_mp4_stream}}">{% trans "Télécharger la vidéo au format MP4" %}</a></li>
+</ul>
 
+</div>
+
+<div style="width:60%;float:right">
 <h2>{% trans "Agenda" %}</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
@@ -34,12 +44,7 @@ Your browser does not support the video tag.
 
 {% endfor %}
 </ul>
+</div>
 
-<h2>Infos</h2>
-<ul>
-  <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
-  <li><a href="{{plenary.get_wmv_stream}}">{% trans "Télécharger la vidéo au format WMV" %}</a></li>
-  <li><a href="{{plenary.get_mp4_stream}}">{% trans "Télécharger la vidéo au format MP4" %}</a></li>
-</ul>
 
 {% endblock %}
