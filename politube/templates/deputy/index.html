@@ -37,6 +37,7 @@
       {% endfor %}
     </div>
 
+    {% if parties|length > 1 %}
     <div class="col-md-2">
       <div class="navbar pt-sidenavbar" data-spy="affix" data-offset-top="0">
         <ul class="nav">
@@ -47,6 +48,7 @@
         </ul>
       </div>
     </div>
+    {% endif %}
 
   </div>
 </div>
