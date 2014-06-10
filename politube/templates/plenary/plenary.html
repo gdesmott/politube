@@ -14,7 +14,7 @@
 </div>
 
 <div style="margin:5px;float:left">
-<video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
+<video id="vid" width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
@@ -26,7 +26,6 @@ Your browser does not support the video tag.
 </ul>
 
 </div>
-
 <div style="width:60%;float:right;overflow:auto;height:400px">
 <h2>{% trans "Agenda" %}</h2>
 <ul>
@@ -40,11 +39,47 @@ Your browser does not support the video tag.
 {% ifchanged %} <h4> {{ agenda.get_subsection }} </h4>  {% endifchanged %}
 {% endif %}
 
-<li><a onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
+<li><a id="time{{ agenda.time }}" onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
 
 {% endfor %}
 </ul>
 </div>
 
+<style>
+.highlight {
+    background: lightgrey;
+}
+</style>
 
+<script>
+// Find cleaner way to instanciate this variable
+times = [
+{% for agenda in plenary.agendaitem_set.all %}
+    {{agenda.time}},
+{% endfor %}
+];
+currentHighlight = 0;
+
+$('#vid').on('timeupdate', function() {
+    if ($('#vid').prop('readyState') == 0) {
+        // We don't have info from video yet so can't call currentTime
+        return;
+    }
+
+    ctime = $('#vid').prop('currentTime');
+    // Find last link with a time lower than current time
+    for (var i = 0; i < times.length; i++) {
+        if(ctime <= times[i]) {
+            console.log('found ' + times[i-1] + ' from ', ctime);
+            // if different from current highlighted link, highlight it
+            if(times[i-1] != currentHighlight){
+                currentHighlight = times[i-1];
+                $('.highlight').removeClass('highlight');
+                $('#time' + currentHighlight).addClass('highlight');
+            }
+            break;
+        }
+    }
+})
+</script>
 {% endblock %}
