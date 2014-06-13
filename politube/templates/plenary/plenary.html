@@ -13,7 +13,8 @@
 <h1>{{ plenary.get_title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
 </div>
 
-<div style="margin:5px;float:left">
+<div class="row">
+<div class="col-md-4">
 <video id="vid" width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
@@ -26,7 +27,9 @@ Your browser does not support the video tag.
 </ul>
 
 </div>
-<div style="width:60%;float:right;overflow:auto;height:400px">
+
+<div class="col-md-8">
+<div style="overflow-y:auto;height:400px">
 <h2>{% trans "Agenda" %}</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
@@ -43,6 +46,8 @@ Your browser does not support the video tag.
 
 {% endfor %}
 </ul>
+</div>
+</div>
 </div>
 
 <style>
