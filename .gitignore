@@ -2,3 +2,4 @@ ve/
 db.sqlite
 fabfile.py
 *.mo
+*.pyc

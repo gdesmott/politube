@@ -13,11 +13,23 @@
 <h1>{{ plenary.get_title }}<small> {{ plenary.date|date:"d m Y H:i" }}</small></h1>
 </div>
 
-<video width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
+<div class="row">
+<div class="col-md-4">
+<video id="vid" width="320" height="240" controls preload=auto oncanplay="startIfNeeded();">
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
+<h2>Infos</h2>
+<ul>
+  <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
+  <li><a href="{{plenary.get_wmv_stream}}">{% trans "Télécharger la vidéo au format WMV" %}</a></li>
+  <li><a href="{{plenary.get_mp4_stream}}">{% trans "Télécharger la vidéo au format MP4" %}</a></li>
+</ul>
 
+</div>
+
+<div class="col-md-8">
+<div style="overflow-y:auto;height:400px">
 <h2>{% trans "Agenda" %}</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
@@ -30,16 +42,49 @@ Your browser does not support the video tag.
 {% ifchanged %} <h4> {{ agenda.get_subsection }} </h4>  {% endifchanged %}
 {% endif %}
 
-<li><a onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
+<li><a id="time{{ agenda.time }}" onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
 
 {% endfor %}
 </ul>
+</div>
+</div>
+</div>
 
-<h2>Infos</h2>
-<ul>
-  <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
-  <li><a href="{{plenary.get_wmv_stream}}">{% trans "Télécharger la vidéo au format WMV" %}</a></li>
-  <li><a href="{{plenary.get_mp4_stream}}">{% trans "Télécharger la vidéo au format MP4" %}</a></li>
-</ul>
+<style>
+.highlight {
+    background: lightgrey;
+}
+</style>
 
+<script>
+// Find cleaner way to instanciate this variable
+times = [
+{% for agenda in plenary.agendaitem_set.all %}
+    {{agenda.time}},
+{% endfor %}
+];
+currentHighlight = 0;
+
+$('#vid').on('timeupdate', function() {
+    if ($('#vid').prop('readyState') == 0) {
+        // We don't have info from video yet so can't call currentTime
+        return;
+    }
+
+    ctime = $('#vid').prop('currentTime');
+    // Find last link with a time lower than current time
+    for (var i = 0; i < times.length; i++) {
+        if(ctime <= times[i]) {
+            //console.log('found ' + times[i-1] + ' from ', ctime);
+            // if different from current highlighted link, highlight it
+            if(times[i-1] != currentHighlight){
+                currentHighlight = times[i-1];
+                $('.highlight').removeClass('highlight');
+                $('#time' + currentHighlight).addClass('highlight');
+            }
+            break;
+        }
+    }
+})
+</script>
 {% endblock %}
