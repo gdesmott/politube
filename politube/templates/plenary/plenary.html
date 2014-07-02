@@ -89,6 +89,37 @@ speakers = [
 
 currentHighlight = 0;
 
+
+function display_agenda_item(time_section, speaker) {
+    // only need to change if different from current one
+    if(time_section == currentHighlight){
+        return;
+    }
+
+    currentHighlight = time_section;
+
+    // sometime it's not found and it's undefined
+    if(!time_section){
+        return;
+    }
+
+    // swich highlight to current one
+    $('.highlight').removeClass('highlight');
+    $('#time' + currentHighlight).addClass('highlight');
+    // scroll to it
+    $('#agenda').scrollTop($('#agenda').scrollTop()+ $('#time' + currentHighlight).position().top - 10)
+
+    // Display mini card on current speaking deputy
+    // TODO We should probably have some sort of caching for slow connections
+    if( speaker != null){ // Not all section have a known speaker
+        $.get('/deputy/'+ speaker + '/embed', function (response) {
+            $('#deputy').html(response);
+        })
+    }else{
+        $('#deputy').html('');
+    }
+}
+
 $('#vid').on('timeupdate', function() {
     if ($('#vid').prop('readyState') == 0) {
         // We don't have info from video yet so can't call currentTime
@@ -100,30 +131,7 @@ $('#vid').on('timeupdate', function() {
     for (var i = 0; i < times.length; i++) {
         if(ctime <= times[i]) {
             //console.log('found ' + times[i-1] + ' from ', ctime, 'speaker ', speakers[i-1]);
-            // if different from current highlighted link, highlight it
-            if(times[i-1] != currentHighlight){
-                currentHighlight = times[i-1];
-                $('.highlight').removeClass('highlight');
-                if(currentHighlight){
-                $('#time' + currentHighlight).addClass('highlight');
-                // scroll to highlighted
-                $('#agenda').scrollTop($('#agenda').scrollTop()+ $('#time' + currentHighlight).position().top - 10)
-                $('#time' + currentHighlight)
-
-                // Display mini card on current speaking deputy
-                // We should probably have some sort of caching for slow connexions
-                if(speakers[i-1] != null){
-                    $.get('/deputy/'+ speakers[i-1] + '/embed', function (response) {
-                    $('#deputy').html(response);
-                    })
-                }else{
-                    $('#deputy').html('');
-                }
-                }
-
-
-
-            }
+            display_agenda_item(times[i-1], speakers[i-1]);
             break;
         }
     }
