@@ -19,6 +19,10 @@
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
+
+<div id="deputy">
+</div>
+
 <h2>Infos</h2>
 <ul>
   <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
@@ -29,17 +33,17 @@ Your browser does not support the video tag.
 </div>
 
 <div class="col-md-8">
-<div style="overflow-y:auto;height:400px">
+<div id="agenda" style="overflow-y:auto;height:400px">
 <h2>{% trans "Agenda" %}</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
 
 {% if agenda.get_section %}
-  {% ifchanged %} <h3> {{ agenda.get_section }} </h3>  {% endifchanged %}
+  {% ifchanged %} <h3> {{ agenda.get_section | capfirst }} </h3>  {% endifchanged %}
 {% endif %}
 
 {% if agenda.get_subsection %}
-{% ifchanged %} <h4> {{ agenda.get_subsection }} </h4>  {% endifchanged %}
+{% ifchanged %} <h4> {{ agenda.get_subsection  | capfirst }} </h4>  {% endifchanged %}
 {% endif %}
 
 <li><a id="time{{ agenda.time }}" onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
@@ -54,6 +58,15 @@ Your browser does not support the video tag.
 .highlight {
     background: lightgrey;
 }
+.deputyimg {
+    float:left;
+    height:70px;
+    margin-right:8px
+}
+/* Make image bigger when we hover over it */
+.deputyimg:hover {
+    height: 100%;
+}
 </style>
 
 <script>
@@ -63,7 +76,49 @@ times = [
     {{agenda.time}},
 {% endfor %}
 ];
+
+speakers = [
+{% for agenda in plenary.agendaitem_set.all %}
+    {% if agenda.speaker_id %}
+    '{{agenda.speaker_id.pk}}',
+{%else%}
+    null,
+{% endif %}
+{% endfor %}
+];
+
 currentHighlight = 0;
+
+
+function display_agenda_item(time_section, speaker) {
+    // only need to change if different from current one
+    if(time_section == currentHighlight){
+        return;
+    }
+
+    currentHighlight = time_section;
+
+    // sometime it's not found and it's undefined
+    if(!time_section){
+        return;
+    }
+
+    // swich highlight to current one
+    $('.highlight').removeClass('highlight');
+    $('#time' + currentHighlight).addClass('highlight');
+    // scroll to it
+    $('#agenda').scrollTop($('#agenda').scrollTop()+ $('#time' + currentHighlight).position().top - 10)
+
+    // Display mini card on current speaking deputy
+    // TODO We should probably have some sort of caching for slow connections
+    if( speaker != null){ // Not all section have a known speaker
+        $.get('/deputy/'+ speaker + '/embed', function (response) {
+            $('#deputy').html(response);
+        })
+    }else{
+        $('#deputy').html('');
+    }
+}
 
 $('#vid').on('timeupdate', function() {
     if ($('#vid').prop('readyState') == 0) {
@@ -75,13 +130,8 @@ $('#vid').on('timeupdate', function() {
     // Find last link with a time lower than current time
     for (var i = 0; i < times.length; i++) {
         if(ctime <= times[i]) {
-            //console.log('found ' + times[i-1] + ' from ', ctime);
-            // if different from current highlighted link, highlight it
-            if(times[i-1] != currentHighlight){
-                currentHighlight = times[i-1];
-                $('.highlight').removeClass('highlight');
-                $('#time' + currentHighlight).addClass('highlight');
-            }
+            //console.log('found ' + times[i-1] + ' from ', ctime, 'speaker ', speakers[i-1]);
+            display_agenda_item(times[i-1], speakers[i-1]);
             break;
         }
     }

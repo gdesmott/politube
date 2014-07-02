@@ -3,3 +3,4 @@ db.sqlite
 fabfile.py
 *.mo
 *.pyc
+*.sw?

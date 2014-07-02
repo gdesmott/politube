@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<div class="name">
+    <h3>{{ deputy.full_name }}<small> {{deputy.party.name}}</small></h3>
+</div>
+
+<address>
+{% if deput.language %}
+{{ deputy.language }}<br>
+{% endif %}
+{% if deput.email %}
+<a href='mailto:{{ deputy.email }}'>{{ deputy.email }}</a><br>
+{% endif %}
+{% if deputy.website %}
+<a href='{{deputy.website}}'>{{deputy.website}}</a><br>
+{% endif %}
+</address>
+<p><img src="{{deputy.photo_uri}}" class="img-rounded deputyimg" /></p>
+<p><i>{{ deputy.get_cv }}</i></p>
