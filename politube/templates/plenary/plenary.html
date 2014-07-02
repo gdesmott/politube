@@ -19,6 +19,10 @@
 <source src='{{ plenary.get_mp4_stream }}' type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
+
+<div id="deputy">
+</div>
+
 <h2>Infos</h2>
 <ul>
   <li><a href="{{plenary.get_source}}">{% trans "Voir sur lachambre.be" %}</a></li>
@@ -63,6 +67,17 @@ times = [
     {{agenda.time}},
 {% endfor %}
 ];
+
+speakers = [
+{% for agenda in plenary.agendaitem_set.all %}
+    {% if agenda.speaker_id %}
+    '{{agenda.speaker_id.pk}}',
+{%else%}
+    null,
+{% endif %}
+{% endfor %}
+];
+
 currentHighlight = 0;
 
 $('#vid').on('timeupdate', function() {
@@ -75,12 +90,21 @@ $('#vid').on('timeupdate', function() {
     // Find last link with a time lower than current time
     for (var i = 0; i < times.length; i++) {
         if(ctime <= times[i]) {
-            //console.log('found ' + times[i-1] + ' from ', ctime);
+            //console.log('found ' + times[i-1] + ' from ', ctime, 'speaker ', speakers[i-1]);
             // if different from current highlighted link, highlight it
             if(times[i-1] != currentHighlight){
                 currentHighlight = times[i-1];
                 $('.highlight').removeClass('highlight');
                 $('#time' + currentHighlight).addClass('highlight');
+                if(speakers[i-1] != null){
+                    $.get('/deputy/'+ speakers[i-1] + '/embed', function (response) {
+                    $('#deputy').html(response);
+                    })
+                }else{
+                    $('#deputy').html('');
+                }
+
+
             }
             break;
         }
