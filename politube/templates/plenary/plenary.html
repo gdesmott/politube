@@ -104,6 +104,7 @@ $('#vid').on('timeupdate', function() {
             if(times[i-1] != currentHighlight){
                 currentHighlight = times[i-1];
                 $('.highlight').removeClass('highlight');
+                if(currentHighlight){
                 $('#time' + currentHighlight).addClass('highlight');
                 // scroll to highlighted
                 $('#agenda').scrollTop($('#agenda').scrollTop()+ $('#time' + currentHighlight).position().top - 10)
@@ -116,6 +117,8 @@ $('#vid').on('timeupdate', function() {
                 }else{
                     $('#deputy').html('');
                 }
+                }
+
 
 
             }
