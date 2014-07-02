@@ -33,7 +33,7 @@ Your browser does not support the video tag.
 </div>
 
 <div class="col-md-8">
-<div style="overflow-y:auto;height:400px">
+<div id="agenda" style="overflow-y:auto;height:400px">
 <h2>{% trans "Agenda" %}</h2>
 <ul>
 {% for agenda in plenary.agendaitem_set.all %}
@@ -105,6 +105,10 @@ $('#vid').on('timeupdate', function() {
                 currentHighlight = times[i-1];
                 $('.highlight').removeClass('highlight');
                 $('#time' + currentHighlight).addClass('highlight');
+                // scroll to highlighted
+                $('#agenda').scrollTop($('#agenda').scrollTop()+ $('#time' + currentHighlight).position().top - 10)
+                $('#time' + currentHighlight)
+
                 if(speakers[i-1] != null){
                     $.get('/deputy/'+ speakers[i-1] + '/embed', function (response) {
                     $('#deputy').html(response);
