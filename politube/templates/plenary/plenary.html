@@ -39,11 +39,11 @@ Your browser does not support the video tag.
 {% for agenda in plenary.agendaitem_set.all %}
 
 {% if agenda.get_section %}
-  {% ifchanged %} <h3> {{ agenda.get_section }} </h3>  {% endifchanged %}
+  {% ifchanged %} <h3> {{ agenda.get_section | capfirst }} </h3>  {% endifchanged %}
 {% endif %}
 
 {% if agenda.get_subsection %}
-{% ifchanged %} <h4> {{ agenda.get_subsection }} </h4>  {% endifchanged %}
+{% ifchanged %} <h4> {{ agenda.get_subsection  | capfirst }} </h4>  {% endifchanged %}
 {% endif %}
 
 <li><a id="time{{ agenda.time }}" onclick="play({{ agenda.time }}); window.scrollTo(0,0);" href="#{{ agenda.time }}">{{ agenda.displayTime }} - {{ agenda.speaker }}</a></li>
