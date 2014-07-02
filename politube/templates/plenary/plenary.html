@@ -110,6 +110,8 @@ $('#vid').on('timeupdate', function() {
                 $('#agenda').scrollTop($('#agenda').scrollTop()+ $('#time' + currentHighlight).position().top - 10)
                 $('#time' + currentHighlight)
 
+                // Display mini card on current speaking deputy
+                // We should probably have some sort of caching for slow connexions
                 if(speakers[i-1] != null){
                     $.get('/deputy/'+ speakers[i-1] + '/embed', function (response) {
                     $('#deputy').html(response);
