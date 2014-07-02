@@ -11,4 +11,7 @@ urlpatterns = patterns('',
   url(r'^(?P<pk>\w+)/$', DetailView.as_view(model=Deputy,
       template_name='deputy/deputy.html'),
       name='deputy'),
+  url(r'^(?P<pk>\w+)/embed$', DetailView.as_view(model=Deputy,
+      template_name='deputy/deputy_embed.html'),
+      name='deputy'),
 )
